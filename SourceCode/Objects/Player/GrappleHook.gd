@@ -5,7 +5,7 @@ var direction: Vector2 = Vector2.ZERO
 var tip: Vector2 = Vector2.ZERO
 var a = Vector2(100, 100)
 
-var speed: int = 20
+var speed: int = 50
 
 var is_flying: bool = false
 var is_hooked: bool = false

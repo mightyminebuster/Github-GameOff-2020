@@ -18,14 +18,17 @@ var turn_animation_speed: float = 0.24
 
 #Horizontal Movement
 var current_speed: float = 0
+var running_velocity: float 
+var move_horizontally_states: Array = ["run", "fall", "jump", "double_jump"]
+
 const max_speed: int = 400
 const acceleration: int = 60
 const decceleration: int = 100
 
 #Aerial Movement
-const gravity: int = 1500
+const gravity: int = 1700
 const air_friction: int = 51
-const gravity_exemption_states: Array = ["die", "dash", "grapple"]
+const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_vertical_velocity: int = 150
 
 #Jump / Double Jump
@@ -38,6 +41,7 @@ var jumping_states: Array = ["jump", "double_jump"]
 
 #Grapple
 var target
+var grapple_velocity: Vector2 = Vector2.ZERO
 
 #Loop Functions
 func _physics_process(delta : float) -> void:
@@ -47,6 +51,10 @@ func _physics_process(delta : float) -> void:
 	state_origin.call(current_state + "_logic", delta)
 	get_input()
 	velocity = move_and_slide(velocity, Vector2.UP)
+	if current_state in move_horizontally_states:
+		if direction_facing == 1 && running_velocity < velocity.x || direction_facing == -1 && running_velocity > velocity.x:
+			velocity.x -= running_velocity
+	
 	apply_gravity(delta)
 	flip_sprite()
 
@@ -81,7 +89,8 @@ func set_state(new_state : String, state_originator: Object = self) -> void:
 
 func move_horizontally(subtrahend : int) -> void:
 	current_speed = move_toward(current_speed, max_speed - subtrahend, acceleration)
-	velocity.x = current_speed * movement_direction
+	running_velocity = current_speed * movement_direction
+	velocity.x += running_velocity
 
 
 func jump(height : int) -> void:
@@ -91,12 +100,9 @@ func jump(height : int) -> void:
 
 #Define state functions below
 func idle_enter_logic() -> void:
-	pass
+	velocity.x = 0
 
 func idle_logic(_delta : float) -> void:
-	#Deccelerate
-	velocity.x = move_toward(velocity.x, 0, decceleration)
-
 	#Exit State
 	if movement_direction != 0:
 		set_state("run")
@@ -137,7 +143,7 @@ func run_exit_logic() -> void:
 
 
 func fall_enter_logic() -> void:
-	velocity.y = 0
+	pass
 
 func fall_logic(_delta : float) -> void:
 	move_horizontally(air_friction)
@@ -222,12 +228,19 @@ func grapple_enter_logic() -> void:
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
 		set_state("fall")
-	
-	if target != null:
-		position.x = move_toward(position.x, target.x, $GrappleHook.speed)
-		position.y = move_toward(position.y, target.y, $GrappleHook.speed)
-	else:
+	if target == null:
 		set_state("fall")
+	else:
+		grapple_velocity = (target - position).normalized() * $GrappleHook.speed
+		
+		if grapple_velocity.y > 0:
+			# Pulling down isn't as strong
+			grapple_velocity.y *= 0.55
+		else:
+			# Pulling up is stronger
+			grapple_velocity.y *= 1.2
+		
+		velocity += grapple_velocity
 
 func grapple_exit_logic() -> void:
 	$GrappleHook.release() 
