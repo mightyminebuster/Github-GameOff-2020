@@ -15,7 +15,7 @@ func shoot():
 	if $RayCast2D.is_colliding():
 		print($RayCast2D.get_collision_point())
 		global_position = $RayCast2D.get_collision_point()
-		return global_position
+		return $RayCast2D.get_collider()
 	return null
 
 func release() -> void:

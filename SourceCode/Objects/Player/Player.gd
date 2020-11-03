@@ -37,7 +37,8 @@ var is_double_jumped: bool = false
 var jumping_states: Array = ["jump", "double_jump"]
 
 #Grapple
-var target
+var target: Node2D
+var grapple_joint: PackedScene = load("res://Objects/Player/GrappleJoint.tscn")
 
 #Loop Functions
 func _physics_process(delta : float) -> void:
@@ -220,13 +221,14 @@ func grapple_enter_logic() -> void:
 	target = $GrappleHook.shoot()
 
 func grapple_logic(_delta : float) -> void:
-	if Input.is_action_just_released("shoot"):
-		set_state("fall")
-	
 	if target != null:
-		position.x = move_toward(position.x, target.x, $GrappleHook.speed)
-		position.y = move_toward(position.y, target.y, $GrappleHook.speed)
-	else:
+		var grapple_joint_inst = grapple_joint.instance()
+		grapple_joint_inst.node_a = $GrappleStaticBody.get_path()
+		grapple_joint_inst.node_b = target.get_path()
+		grapple_joint_inst.global_position = $GrappleHook.position
+		get_tree().get_root().add_child(grapple_joint_inst)
+		position = $GrappleStaticBody.position
+	else: 
 		set_state("fall")
 
 func grapple_exit_logic() -> void:

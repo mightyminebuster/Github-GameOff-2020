@@ -16,6 +16,17 @@ polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
 modulate = Color( 0.403922, 0.607843, 0.607843, 1 )
 texture = ExtResource( 2 )
 
+[node name="GrappleStaticBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="PlayerSprite2" type="Sprite" parent="GrappleStaticBody"]
+modulate = Color( 0.403922, 0.607843, 0.607843, 1 )
+scale = Vector2( 1.25, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GrappleStaticBody"]
+polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
+
 [node name="GrappleHook" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
