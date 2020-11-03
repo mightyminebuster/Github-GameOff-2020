@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 #State Machine
 var states: Array = ["idle", "run", "fall", "jump", "die"]
+
 var current_state: String = states[0]
 var previous_state: String
 var state_origin: Object = self #where is the state defined
@@ -23,9 +24,9 @@ const acceleration: int = 60
 const decceleration: int = 100
 
 #Aerial Movement
-const gravity: int = 1500
+const gravity: int = 1200
 const air_friction: int = 51
-const gravity_exemption_states: Array = ["die", "dash", "grapple"]
+const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_vertical_velocity: int = 150
 
 #Jump / Double Jump
@@ -36,10 +37,13 @@ var is_double_jumped: bool = false
 
 var jumping_states: Array = ["jump", "double_jump"]
 
+<<<<<<< HEAD
 #Grapple
 var target: Node2D
 var grapple_joint: PackedScene = load("res://Objects/Player/GrappleJoint.tscn")
 
+=======
+>>>>>>> parent of 99a67fe... Grappling hook with Kinematic method
 #Loop Functions
 func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
@@ -64,7 +68,7 @@ func apply_gravity(delta : float):
 		velocity.y += gravity * delta #idk why I apply delta here cause move and slide applies delta but it works and im not questioning it
 
 func flip_sprite() -> void:
-	$PlayerSprite.scale.x = move_toward($PlayerSprite.scale.x, direction_facing, turn_animation_speed)
+	$Sprite.scale.x = move_toward($Sprite.scale.x, direction_facing, turn_animation_speed)
 
 
 #Common Functions
@@ -104,9 +108,6 @@ func idle_logic(_delta : float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
 		set_state("jump")
-	
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
 
 func idle_exit_logic() -> void:
 	current_speed = 0 #we reset current speed here to maintain momentum on run-up jumps 
@@ -128,9 +129,6 @@ func run_logic(_delta : float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
 		set_state("jump")
-		
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
 
 func run_exit_logic() -> void:
 	pass 
@@ -146,9 +144,7 @@ func fall_logic(_delta : float) -> void:
 	if Input.is_action_just_pressed("jump") && !is_double_jumped:
 		set_state("double_jump")
 		
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
-	
+
 	#Exit States
 	if is_on_floor():
 		set_state("idle")
@@ -167,10 +163,7 @@ func jump_enter_logic() -> void:
 
 func jump_logic(_delta : float) -> void:
 	move_horizontally(air_friction)
-	
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
-	
+
 	#Exit State
 	if velocity.y > 0:
 		#switch state to fall if velocity is positive
@@ -195,10 +188,7 @@ func double_jump_enter_logic() -> void:
 
 func double_jump_logic(_delta : float) -> void:
 	move_horizontally(air_friction)
-	
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
-	
+
 	#Exit State
 	if velocity.y > 0:
 		#switch state to fall if velocity is positive
@@ -216,6 +206,7 @@ func double_jump_exit_logic() -> void:
 	pass 
 
 
+<<<<<<< HEAD
 
 func grapple_enter_logic() -> void:
 	target = $GrappleHook.shoot()
@@ -236,6 +227,8 @@ func grapple_exit_logic() -> void:
 
 
 
+=======
+>>>>>>> parent of 99a67fe... Grappling hook with Kinematic method
 func die_enter_logic() -> void:
 	velocity = Vector2.ZERO #Stop all movement
 
