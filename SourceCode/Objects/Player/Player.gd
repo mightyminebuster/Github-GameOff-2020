@@ -26,7 +26,7 @@ const acceleration: int = 60
 const decceleration: int = 100
 
 #Aerial Movement
-const gravity: int = 1700
+const gravity: int = 1500
 const air_friction: int = 51
 const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_velocity: int = 1000
@@ -233,7 +233,7 @@ func grapple_logic(_delta : float) -> void:
 	if target == null:
 		set_state("fall")
 	else:
-		grapple_velocity = (target - position).normalized() * $GrappleHook.speed
+		grapple_velocity = (target - position).normalized() * $GrappleHook.pull
 		
 		if grapple_velocity.y > 0:
 			# Pulling down isn't as strong
