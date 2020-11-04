@@ -29,7 +29,7 @@ const decceleration: int = 100
 const gravity: int = 1700
 const air_friction: int = 51
 const gravity_exemption_states: Array = ["die", "dash"]
-const terminal_vertical_velocity: int = 150
+const terminal_velocity: int = 1000
 
 #Jump / Double Jump
 const jump_height: int = 172
@@ -50,6 +50,8 @@ func _physics_process(delta : float) -> void:
 	
 	state_origin.call(current_state + "_logic", delta)
 	get_input()
+	velocity = velocity.clamped(terminal_velocity)
+	print(velocity)
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if current_state in move_horizontally_states:
 		if direction_facing == 1 && running_velocity < velocity.x || direction_facing == -1 && running_velocity > velocity.x:
@@ -239,6 +241,9 @@ func grapple_logic(_delta : float) -> void:
 		else:
 			# Pulling up is stronger
 			grapple_velocity.y *= 1.2
+		
+		if sign(grapple_velocity.x) != direction_facing:
+			grapple_velocity.x *= 0.7
 		
 		velocity += grapple_velocity
 
