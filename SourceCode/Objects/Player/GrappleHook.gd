@@ -26,7 +26,7 @@ func shoot():
 			tip_target = $RayCast2D.get_collision_point()
 			
 		elif $RayCast2D.get_collider().collision_layer == 2:
-			camera.shake(10, 10)
+			camera.shake(20, 5)
 			tip_target = $RayCast2D.get_collision_point()
 			return $RayCast2D.get_collision_point()
 	return null
