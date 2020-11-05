@@ -16,10 +16,11 @@ var pull: int = 50
 func shoot():
 	$RayCast2D.enabled = true
 	if $RayCast2D.is_colliding():
-		camera.shake(20, 10)
-		$GrappleTip.visible = true
-		get_parent().find_node("GrappleLine").visible = true
+		camera.shake(20, 10) #Shake Camera
+		$GrappleTip.visible = true #set the tip of the hook to visible
+		get_parent().find_node("GrappleLine").visible = true #set the line to visible
 		tip_target = $RayCast2D.get_collision_point()
+		
 		return $RayCast2D.get_collision_point()
 	return null
 

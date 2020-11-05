@@ -245,7 +245,7 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 0.55
 		else:
 			# Pulling up is stronger
-			grapple_velocity.y *= 1.2
+			grapple_velocity.y *= 1.5
 		
 		if sign(grapple_velocity.x) != direction_facing:
 			grapple_velocity.x *= 0.7
