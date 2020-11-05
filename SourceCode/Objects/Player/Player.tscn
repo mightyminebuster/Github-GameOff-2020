@@ -18,7 +18,8 @@ texture = ExtResource( 2 )
 
 [node name="GrappleLine" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 50, -50 )
-width = 5.0
+width = 7.0
+default_color = Color( 0.505882, 0.4, 0.478431, 1 )
 antialiased = true
 
 [node name="GrappleHook" type="Node2D" parent="."]

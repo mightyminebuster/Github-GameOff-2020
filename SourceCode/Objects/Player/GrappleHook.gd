@@ -1,6 +1,9 @@
 extends Node2D
 
-var length: int = 500
+#Node Refrences
+onready var camera = get_parent().get_parent().find_node("Camera2D")
+
+var length: int = 700
 var direction: Vector2 = Vector2.ZERO
 
 var tip: Vector2 = Vector2.ZERO
@@ -13,6 +16,7 @@ var pull: int = 50
 func shoot():
 	$RayCast2D.enabled = true
 	if $RayCast2D.is_colliding():
+		camera.shake(20, 10)
 		$GrappleTip.visible = true
 		get_parent().find_node("GrappleLine").visible = true
 		tip_target = $RayCast2D.get_collision_point()

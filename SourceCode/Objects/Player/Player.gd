@@ -7,6 +7,9 @@ var current_state: String = states[0]
 var previous_state: String
 var state_origin: Object = self #where is the state defined
 
+#Node Refrences
+onready var camera = get_parent().find_node("Camera2D")
+
 #Input	
 var movement_direction: float = 0
 var direction_facing: int = 1
@@ -226,6 +229,7 @@ func double_jump_exit_logic() -> void:
 
 func grapple_enter_logic() -> void:
 	target = $GrappleHook.shoot()
+	
 
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
@@ -233,6 +237,7 @@ func grapple_logic(_delta : float) -> void:
 	if target == null:
 		set_state("fall")
 	else:
+		
 		grapple_velocity = (target - position).normalized() * $GrappleHook.pull
 		
 		if grapple_velocity.y > 0:
