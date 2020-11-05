@@ -54,7 +54,6 @@ func _physics_process(delta : float) -> void:
 	state_origin.call(current_state + "_logic", delta)
 	get_input()
 	velocity = velocity.clamped(terminal_velocity)
-	print(velocity)
 	velocity = move_and_slide(velocity, Vector2.UP)
 	if current_state in move_horizontally_states:
 		if direction_facing == 1 && running_velocity < velocity.x || direction_facing == -1 && running_velocity > velocity.x:
@@ -234,10 +233,10 @@ func grapple_enter_logic() -> void:
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
 		set_state("fall")
-	if target == null:
+	if target == null && $GrappleHook.tip == $GrappleHook.tip_target:
 		set_state("fall")
-	else:
-		
+	
+	if target != null && $GrappleHook.tip == $GrappleHook.tip_target:
 		grapple_velocity = (target - position).normalized() * $GrappleHook.pull
 		
 		if grapple_velocity.y > 0:
