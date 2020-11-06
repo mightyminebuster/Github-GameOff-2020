@@ -31,7 +31,9 @@ func shoot():
 			tip_target = $RayCast2D.get_collision_point()
 			return $RayCast2D.get_collision_point()
 	else:
-		tip_target = $RayCast2D.cast_to
+		tip_target = $RayCast2D.cast_to + global_position
+		
+		print(tip_target, "  ", $RayCast2D.cast_to)
 	return null
 
 func release() -> void:
@@ -43,6 +45,8 @@ func release() -> void:
 	get_parent().find_node("GrappleLine").visible = false
 
 func _physics_process(_delta : float):
+	
+	
 	if is_shooting:
 		tip.x = move_toward(tip.x, tip_target.x, speed)
 		tip.y = move_toward(tip.y, tip_target.y, speed)

@@ -29,7 +29,7 @@ const acceleration: int = 60
 const decceleration: int = 100
 
 #Aerial Movement
-const gravity: int = 1700 / 2
+const gravity: int = 1700
 const air_friction: int = 51
 const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_velocity: int = 1000
