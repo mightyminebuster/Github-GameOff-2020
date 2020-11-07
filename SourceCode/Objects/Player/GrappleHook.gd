@@ -6,11 +6,11 @@ onready var camera = get_parent().get_parent().find_node("Camera2D")
 var length: int = 700
 var direction: Vector2 = Vector2.ZERO
 
+var time: float = 0
 var tip: Vector2 = Vector2.ZERO
 var tip_target: Vector2 = Vector2.ZERO
-var speed: int = 25
 
-var pull: int = 50
+var pull: int = 60
 var is_shooting: bool = false
 
 
@@ -44,16 +44,17 @@ func release() -> void:
 	$GrappleTip.visible = false
 	get_parent().find_node("GrappleLine").visible = false
 
-func _physics_process(_delta : float):
+func _physics_process(delta : float):
 	
 	
 	if is_shooting:
-		tip.x = move_toward(tip.x, tip_target.x, speed)
-		tip.y = move_toward(tip.y, tip_target.y, speed)
+		time += 0.1
+		tip = tip.linear_interpolate(tip_target, time)
 		
 		$GrappleTip.global_position = tip
 		get_parent().find_node("GrappleLine").points[1] = $GrappleTip.position
 	else:
+		time = 0
 		$RayCast2D.cast_to = (get_global_mouse_position() - get_parent().position).normalized() * Vector2(length, length)
 		
 		tip = get_parent().find_node("AimingHint").global_position #set tips resting position

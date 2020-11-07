@@ -160,7 +160,7 @@ func fall_logic(_delta : float) -> void:
 	
 	#Exit States
 	if is_on_floor():
-		set_state("idle")
+		set_state("run") #I set to run to maintain momentum
 		is_double_jumped = false #reset
 
 func fall_exit_logic() -> void:
@@ -246,9 +246,10 @@ func grapple_logic(_delta : float) -> void:
 			# Pulling up is stronger
 			grapple_velocity.y *= 1.5
 		
-		if sign(grapple_velocity.x) != direction_facing:
-			grapple_velocity.x *= 0.7
-		
+		if sign(grapple_velocity.x) == direction_facing:
+			grapple_velocity.x *= 1.25
+		else:
+			grapple_velocity.x *= 0.75
 		velocity += grapple_velocity
 
 func grapple_exit_logic() -> void:
