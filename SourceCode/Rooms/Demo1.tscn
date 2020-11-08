@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitcher.tscn" type="PackedScene" id=4]
+
+[node name="Demo1" type="Node2D"]
+
+[node name="GrapplableTiles" parent="." instance=ExtResource( 1 )]
+
+[node name="GroundTiles" parent="." instance=ExtResource( 2 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="SceneSwitcher" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2432, 704 )

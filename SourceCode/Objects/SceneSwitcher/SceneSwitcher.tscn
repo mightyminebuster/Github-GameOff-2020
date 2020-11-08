@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.gd" type="Script" id=1]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchEffect.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 48.0
+height = 96.0
+
+[node name="SceneSwitcher" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SceneSwitchEffect" parent="." instance=ExtResource( 3 )]
