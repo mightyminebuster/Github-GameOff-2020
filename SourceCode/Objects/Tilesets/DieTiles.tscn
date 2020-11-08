@@ -61,8 +61,10 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 1/z_index = 0
 
-[node name="GroundTiles" type="TileMap"]
-modulate = Color( 0.0745098, 0.105882, 0.137255, 1 )
+[node name="DieTiles" type="TileMap"]
+modulate = Color( 0.956863, 0.0980392, 0.0117647, 1 )
 tile_set = SubResource( 4 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 16
 format = 1
+tile_data = PoolIntArray( -983009, 0, 0 )

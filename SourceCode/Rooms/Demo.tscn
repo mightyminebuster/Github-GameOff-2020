@@ -1,18 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Rooms/Demo1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Obstacles/PendulumSaw/PendulumSaw.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
 [node name="Demo" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-margin_right = 3840.0
+margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 1, 0.603922, 0.462745, 1 )
 __meta__ = {
@@ -20,21 +21,31 @@ __meta__ = {
 }
 
 [node name="GroundTiles" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376301, 0, 0, 1376302, 0, 0, 1376303, 0, 0, 1376304, 0, 0, 1376305, 0, 0, 1376306, 0, 0, 1376307, 0, 0, 1376308, 0, 0, 1376309, 0, 0, 1376310, 0, 0, 1376311, 0, 0, 1376312, 0, 0, 2031616, 0, 0, 2031617, 0, 0, 2031618, 0, 0, 2031619, 0, 0, 2031620, 0, 0, 2031621, 0, 0, 2031622, 0, 0, 2031623, 0, 0, 2031624, 0, 0, 2031625, 0, 0, 2031626, 0, 0, 2031627, 0, 0, 2031628, 0, 0, 2031629, 0, 0, 2031630, 0, 0, 2031631, 0, 0, 2031632, 0, 0, 2031633, 0, 0, 2031634, 0, 0, 2031635, 0, 0, 2031636, 0, 0, 2031654, 0, 0, 2031655, 0, 0, 2031656, 0, 0, 2031657, 0, 0, 2031658, 0, 0, 2031659, 0, 0, 2031660, 0, 0, 2031661, 0, 0, 2031662, 0, 0, 2031663, 0, 0, 2031664, 0, 0, 2031665, 0, 0, 2031666, 0, 0, 2031667, 0, 0, 2031668, 0, 0, 2031669, 0, 0, 2031670, 0, 0, 2031671, 0, 0, 2031672, 0, 0, 2031673, 0, 0, 2031674, 0, 0, 2031675, 0, 0, 2097152, 0, 0, 2097153, 0, 0, 2097154, 0, 0, 2097155, 0, 0, 2097156, 0, 0, 2097157, 0, 0, 2097158, 0, 0, 2097159, 0, 0, 2097160, 0, 0, 2097161, 0, 0, 2097162, 0, 0, 2097163, 0, 0, 2097164, 0, 0, 2097165, 0, 0, 2097166, 0, 0, 2097167, 0, 0, 2097168, 0, 0, 2097169, 0, 0, 2097170, 0, 0, 2097171, 0, 0, 2097172, 0, 0, 2097173, 0, 0, 2097174, 0, 0, 2097175, 0, 0, 2097176, 0, 0, 2097177, 0, 0, 2097178, 0, 0, 2097179, 0, 0, 2097180, 0, 0, 2097181, 0, 0, 2097182, 0, 0, 2097183, 0, 0, 2097184, 0, 0, 2097185, 0, 0, 2097186, 0, 0, 2097187, 0, 0, 2097188, 0, 0, 2097189, 0, 0, 2097190, 0, 0, 2097191, 0, 0, 2097192, 0, 0, 2097193, 0, 0, 2097194, 0, 0, 2097195, 0, 0, 2097196, 0, 0, 2097197, 0, 0, 2097198, 0, 0, 2097199, 0, 0, 2097200, 0, 0, 2097201, 0, 0, 2097202, 0, 0, 2097203, 0, 0, 2097204, 0, 0, 2097205, 0, 0, 2097206, 0, 0, 2097207, 0, 0, 2097208, 0, 0, 2097209, 0, 0, 2097210, 0, 0, 2097211, 0, 0, 2162688, 0, 0, 2162689, 0, 0, 2162690, 0, 0, 2162691, 0, 0, 2162692, 0, 0, 2162693, 0, 0, 2162694, 0, 0, 2162695, 0, 0, 2162696, 0, 0, 2162697, 0, 0, 2162698, 0, 0, 2162699, 0, 0, 2162700, 0, 0, 2162701, 0, 0, 2162702, 0, 0, 2162703, 0, 0, 2162704, 0, 0, 2162705, 0, 0, 2162706, 0, 0, 2162707, 0, 0, 2162708, 0, 0, 2162709, 0, 0, 2162710, 0, 0, 2162711, 0, 0, 2162712, 0, 0, 2162713, 0, 0, 2162714, 0, 0, 2162715, 0, 0, 2162716, 0, 0, 2162717, 0, 0, 2162718, 0, 0, 2162719, 0, 0, 2162720, 0, 0, 2162721, 0, 0, 2162722, 0, 0, 2162723, 0, 0, 2162724, 0, 0, 2162725, 0, 0, 2162726, 0, 0, 2162727, 0, 0, 2162728, 0, 0, 2162729, 0, 0, 2162730, 0, 0, 2162731, 0, 0, 2162732, 0, 0, 2162733, 0, 0, 2162734, 0, 0, 2162735, 0, 0, 2162736, 0, 0, 2162737, 0, 0, 2162738, 0, 0, 2162739, 0, 0, 2162740, 0, 0, 2162741, 0, 0, 2162742, 0, 0, 2162743, 0, 0, 2162744, 0, 0, 2162745, 0, 0, 2162746, 0, 0, 2162747, 0, 0 )
 
 [node name="GrapplableTiles" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0 )
+
+[node name="DieTiles" parent="." instance=ExtResource( 8 )]
+tile_data = PoolIntArray( 2031637, 0, 0, 2031638, 0, 0, 2031639, 0, 0, 2031640, 0, 0, 2031641, 0, 0, 2031642, 0, 0, 2031643, 0, 0, 2031644, 0, 0, 2031645, 0, 0, 2031646, 0, 0, 2031647, 0, 0, 2031648, 0, 0, 2031649, 0, 0, 2031650, 0, 0, 2031651, 0, 0, 2031652, 0, 0, 2031653, 0, 0 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 256, 704 )
+rotation = -2.68568
+rotation_type = "FullRotation"
+offset = 256
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-
-[node name="Foreground" type="Node2D" parent="."]
-
-[node name="Node" type="Node" parent="Foreground"]
+position = Vector2( 848, 224 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 current = true
 limit_left = 0
 limit_top = 0
-limit_right = 3840
-limit_bottom = 1020
+limit_right = 1920
+limit_bottom = 1080
 smoothing_enabled = true
 drag_margin_left = 0.5
 drag_margin_top = 0.5
@@ -44,6 +55,10 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 target_path = NodePath("../Player")
 
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Node" type="Node" parent="Foreground"]
+
 [node name="SceneSwitcher" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3776, 896 )
-new_scene = ExtResource( 6 )
+position = Vector2( 1872, 896 )
+[connection signal="body_entered" from="SceneSwitcher" to="SceneSwitcher" method="_on_SceneSwitcher_body_entered"]

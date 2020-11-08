@@ -47,6 +47,11 @@ var target
 var grapple_velocity: Vector2 = Vector2.ZERO
 
 #Loop Functions
+func _on_PlayerHitbox_area_entered(area):
+	set_state("die")
+func _on_PlayerHitbox_body_entered(body):
+	set_state("die")
+
 func _physics_process(delta : float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
@@ -265,3 +270,6 @@ func die_logic(_delta : float) -> void:
 
 func die_exit_logic() -> void:
 	pass
+
+
+
