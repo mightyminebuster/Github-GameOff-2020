@@ -1,19 +1,58 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.gd" type="Script" id=1]
-[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchEffect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitcher.gd" type="Script" id=1]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 48.0
-height = 96.0
-
-[node name="SceneSwitcher" type="Area2D"]
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
+[sub_resource type="Animation" id=1]
+resource_name = "FadeFromBlack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/BlackFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[sub_resource type="Animation" id=2]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/BlackFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
 
-[node name="SceneSwitchEffect" parent="." instance=ExtResource( 3 )]
+[node name="SceneSwitchEffect" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackFade" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 1.5
+anims/FadeFromBlack = SubResource( 1 )
+anims/FadeToBlack = SubResource( 2 )
