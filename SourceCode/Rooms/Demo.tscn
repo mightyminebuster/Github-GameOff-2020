@@ -33,7 +33,7 @@ tile_data = PoolIntArray( 2031637, 0, 0, 2031638, 0, 0, 2031639, 0, 0, 2031640, 
 
 [node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 7 )]
 position = Vector2( 256, 704 )
-rotation = -2.68568
+rotation = 0.170236
 rotation_type = "FullRotation"
 offset = 256
 
