@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Obstacles/PendulumSaw/PendulumSaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
@@ -11,8 +12,10 @@
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-margin_right = 12933.0
-margin_bottom = 1084.0
+margin_left = 39.0
+margin_top = 7.0
+margin_right = 12972.0
+margin_bottom = 1091.0
 color = Color( 0.337255, 0.117647, 0.117647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,3 +40,10 @@ limit_bottom = 1080
 target_path = NodePath("../Player")
 
 [node name="Obstacles" type="Node2D" parent="Camera2D"]
+
+[node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1450.17, 494.2 )
+rotation = -0.0584945
+rotation_type = "HalfRotation"
+offset = 128
+speed = 1.0
