@@ -20,46 +20,46 @@ tracks/0/keys = {
 }
 
 [node name="SecurityCamera" type="Position2D"]
-rotation = 0.523599
-scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 __meta__ = {
-"_gizmo_extents_": 20.0
+"_gizmo_extents_": 30.0
 }
 
-[node name="Raycasts" type="Node2D" parent="."]
+[node name="RotationFix" type="Node2D" parent="."]
 
-[node name="RightRaycst" type="RayCast2D" parent="Raycasts"]
+[node name="Raycasts" type="Node2D" parent="RotationFix"]
+
+[node name="RightRaycst" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( 115, 240 )
 collision_mask = 23
 
-[node name="RightMidRaycast" type="RayCast2D" parent="Raycasts"]
+[node name="RightMidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( 57, 240 )
 collision_mask = 23
 
-[node name="MidRaycast" type="RayCast2D" parent="Raycasts"]
+[node name="MidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( 0, 250 )
 collision_mask = 23
 
-[node name="LeftMidRaycast" type="RayCast2D" parent="Raycasts"]
+[node name="LeftMidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( -57, 240 )
 collision_mask = 23
 
-[node name="LeftRaycast" type="RayCast2D" parent="Raycasts"]
+[node name="LeftRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( -115, 240 )
 collision_mask = 23
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="Light2D" type="Light2D" parent="RotationFix"]
 texture = ExtResource( 2 )
 offset = Vector2( 0, 128 )
 shadow_enabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RotationFix"]
 autoplay = "loop"
 playback_speed = 0.16
 anims/loop = SubResource( 1 )
