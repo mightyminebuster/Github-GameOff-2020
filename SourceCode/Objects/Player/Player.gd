@@ -35,7 +35,7 @@ const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_velocity: int = 1000
 
 #Jump / Double Jump
-const jump_height: int = 172
+const jump_height: int = 192
 const double_jump_height: int = 128
 
 var is_double_jumped: bool = false
@@ -46,6 +46,9 @@ var jumping_states: Array = ["jump", "double_jump"]
 var target
 var grapple_velocity: Vector2 = Vector2.ZERO
 
+#die
+var has_animation_started: bool = false
+
 #Loop Functions
 func _on_PlayerHitbox_area_entered(area):
 	set_state("die")
@@ -53,6 +56,7 @@ func _on_PlayerHitbox_body_entered(body):
 	set_state("die")
 
 func _physics_process(delta : float) -> void:
+	print(collision_layer)
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
 	
@@ -232,7 +236,14 @@ func double_jump_exit_logic() -> void:
 
 
 func grapple_enter_logic() -> void:
-	target = $GrappleHook.shoot()
+	if Globals.has_grappling_hook == false:
+		#dont grapple if dont have it
+		if previous_state != "jump" && previous_state != "double_jump":
+			set_state(previous_state)
+		else:
+			set_state("fall")
+	else:
+		target = $GrappleHook.shoot()
 	
 
 func grapple_logic(_delta : float) -> void:
@@ -266,7 +277,9 @@ func die_enter_logic() -> void:
 	velocity = Vector2.ZERO #Stop all movement
 
 func die_logic(_delta : float) -> void:
-	get_tree().reload_current_scene()
+	if ! has_animation_started:
+		has_animation_started = true
+		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 0, 4)
 
 func die_exit_logic() -> void:
 	pass

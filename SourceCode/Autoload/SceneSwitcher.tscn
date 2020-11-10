@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Autoload/SceneSwitcher.gd" type="Script" id=1]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "FadeFromBlack"
 tracks/0/type = "value"

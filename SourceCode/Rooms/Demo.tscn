@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Pickups/GrapplePickup/GrapplePickup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Obstacles/PendulumSaw/PendulumSaw.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=9]
 
 [node name="Demo" type="Node2D"]
 
@@ -16,6 +18,14 @@
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 1, 0.603922, 0.462745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarknessRect" type="ColorRect" parent="Background"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.560784 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,9 +43,22 @@ tile_data = PoolIntArray( 2031637, 0, 0, 2031638, 0, 0, 2031639, 0, 0, 2031640, 
 
 [node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 7 )]
 position = Vector2( 256, 704 )
-rotation = 0.170236
+rotation = -1.52905
 rotation_type = "FullRotation"
 offset = 256
+
+[node name="PendulumSaw2" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1584, 688 )
+rotation = -1.51513
+offset = 256
+
+[node name="SecurityCamera" parent="Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 400, 352 )
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="GrapplePickup" parent="Pickups" instance=ExtResource( 6 )]
+position = Vector2( 1792, 624 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 848, 224 )

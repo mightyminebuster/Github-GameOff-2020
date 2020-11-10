@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "loop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+
+[node name="SecurityCamera" type="Position2D"]
+rotation = -0.364973
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_gizmo_extents_": 20.0
+}
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="RightRaycst" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 115, 240 )
+collision_mask = 23
+
+[node name="RightMidRaycast" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 57, 240 )
+collision_mask = 23
+
+[node name="MidRaycast" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 0, 250 )
+collision_mask = 23
+
+[node name="LeftMidRaycast" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( -57, 240 )
+collision_mask = 23
+
+[node name="LeftRaycast" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( -115, 240 )
+collision_mask = 23
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, 128 )
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "loop"
+playback_speed = 0.25
+anims/loop = SubResource( 1 )

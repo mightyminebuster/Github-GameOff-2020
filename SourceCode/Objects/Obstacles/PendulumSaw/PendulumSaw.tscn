@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://PendulumSaw.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Obstacles/PendulumSaw/PendulumSaw.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Obstacles/PendulumSaw/CirclePlaceholder.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
 
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( 28, -23.1, 28, -20.7, 32, -15.4, 32, 14.4, 27.2, 24, 25.7, 24, 15.3, 32, -15.4, 32, -28, 23, -28, 20.7, -32, 15.4, -32, -14.2, -23.1, -28, -20.6, -28, -14.2, -32, 14.2, -32 )
+
 [sub_resource type="Animation" id=3]
-resource_name = "FullRotation"
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -23,8 +25,7 @@ tracks/0/keys = {
 "values": [ 90.0, -270.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "HalfRotation"
+[sub_resource type="Animation" id=4]
 length = 4.0
 loop = true
 step = 0.5
@@ -54,7 +55,7 @@ tracks/1/keys = {
 }
 
 [node name="PendulumSaw" type="Position2D"]
-rotation = 0.523599
+rotation = -0.354153
 script = ExtResource( 1 )
 __meta__ = {
 "_gizmo_extents_": 20.0
@@ -77,9 +78,13 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
+scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Area2D"]
+occluder = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "HalfRotation"
 anims/FullRotation = SubResource( 3 )
-anims/HalfRotation = SubResource( 2 )
+anims/HalfRotation = SubResource( 4 )
