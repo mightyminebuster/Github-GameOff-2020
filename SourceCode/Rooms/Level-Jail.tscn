@@ -7,7 +7,7 @@
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
-[node name="Level1" type="Node2D"]
+[node name="Level-Jail" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -33,61 +33,63 @@ tile_data = PoolIntArray( 524493, 0, 0, 524494, 0, 0, 524495, 0, 0, 655546, 0, 0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-[node name="SecurityCamera3" parent="." instance=ExtResource( 6 )]
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="SecurityCamera3" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( -19.0288, 584 )
 rotation = -0.315905
 scale = Vector2( 1, 1.958 )
 speed = 0.357
 
-[node name="SecurityCamera2" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera2" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 1632.68, 309.958 )
 rotation = 0.921534
 scale = Vector2( 1.164, 2.297 )
 speed = 0.144
 
-[node name="SecurityCamera" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 1708.06, 444 )
 rotation = -0.37001
 scale = Vector2( 1.471, 1.932 )
 speed = 0.142
 
-[node name="SecurityCamera4" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera4" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 2227.06, 428 )
 rotation = -0.37001
 scale = Vector2( 1.471, 1.932 )
 speed = 0.142
 
-[node name="SecurityCamera5" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera5" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 3073.06, 720 )
 rotation = 0.6353
 scale = Vector2( 1.471, 1.932 )
 speed = 0.227
 
-[node name="SecurityCamera6" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera6" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 3615.06, 13.0001 )
 rotation = -0.0558505
 scale = Vector2( 1.374, 2.798 )
 speed = 0.137
 
-[node name="SecurityCamera7" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera7" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 4901.26, 609.2 )
 rotation = 2.33351
 scale = Vector2( 1.471, 2.225 )
 speed = 0.132
 
-[node name="SecurityCamera8" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera8" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 5503.26, 77.834 )
 rotation = 0.165806
 scale = Vector2( 1.471, 3.266 )
 speed = 0.186
 
-[node name="SecurityCamera9" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera9" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 7208.26, 20.2 )
 rotation = 0.267035
 scale = Vector2( 1.471, 3.621 )
 speed = 0.186
 
-[node name="SecurityCamera10" parent="." instance=ExtResource( 6 )]
+[node name="SecurityCamera10" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 8662.46, 426.6 )
 rotation = 0.663225
 scale = Vector2( 1.471, 2.392 )
@@ -98,6 +100,4 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../Player")
-
-[node name="Obstacles" type="Node2D" parent="Camera2D"]
+target_path = NodePath("../../Level-Jail/Player")

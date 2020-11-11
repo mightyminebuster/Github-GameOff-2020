@@ -24,13 +24,13 @@ var current_speed: float = 0
 var running_velocity: float 
 var move_horizontally_states: Array = ["run", "fall", "jump", "double_jump"]
 
-const max_speed: int = 400
+const max_speed: int = 300
 const acceleration: int = 60
 const decceleration: int = 100
 
 #Aerial Movement
 const gravity: int = 1700
-const air_friction: int = 51
+const air_friction: int = 75
 const gravity_exemption_states: Array = ["die", "dash"]
 const terminal_velocity: int = 1000
 
@@ -56,7 +56,7 @@ func _on_PlayerHitbox_body_entered(body):
 	set_state("die")
 
 func _physics_process(delta : float) -> void:
-	print(collision_layer)
+	print(velocity)
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
 	
@@ -277,7 +277,7 @@ func die_enter_logic() -> void:
 	velocity = Vector2.ZERO #Stop all movement
 
 func die_logic(_delta : float) -> void:
-	if ! has_animation_started:
+	if !has_animation_started:
 		has_animation_started = true
 		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 0, 4)
 
