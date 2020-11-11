@@ -24,7 +24,7 @@ var current_speed: float = 0
 var running_velocity: float 
 var move_horizontally_states: Array = ["run", "fall", "jump", "double_jump"]
 
-const max_speed: int = 300
+const max_speed: int = 400
 const acceleration: int = 60
 const decceleration: int = 100
 
