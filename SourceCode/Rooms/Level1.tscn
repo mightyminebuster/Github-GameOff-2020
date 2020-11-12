@@ -47,42 +47,42 @@ target_path = NodePath("../Player")
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1450.17, 494.2 )
-rotation = -1.5708
+rotation = 1.5708
 rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = 0.573376
+rotation = -0.406998
 rotation_type = "HalfRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = 0.39084
+rotation = -0.589536
 rotation_type = "HalfRotation"
 offset = 407
 speed = 0.6
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = 1.5425
+rotation = -1.5708
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = -1.54061
+rotation = -1.5708
 rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1461.34, 708 )
-rotation = 0.574926
+rotation = -0.405451
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.6
