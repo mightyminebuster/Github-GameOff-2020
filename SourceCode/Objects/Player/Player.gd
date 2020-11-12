@@ -169,7 +169,7 @@ func fall_logic(_delta : float) -> void:
 	
 	#Exit States
 	if is_on_floor():
-		set_state("run") #I set to run to maintain momentum
+		set_state("idle") 
 		is_double_jumped = false #reset
 
 func fall_exit_logic() -> void:
