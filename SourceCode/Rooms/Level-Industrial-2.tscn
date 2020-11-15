@@ -17,9 +17,9 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 margin_left = -182.0
-margin_top = 1.0
+margin_top = 2.0
 margin_right = 13234.0
-margin_bottom = 1351.0
+margin_bottom = 1352.0
 color = Color( 0.337255, 0.117647, 0.117647, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,126 +50,126 @@ target_path = NodePath("../Player")
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1017.17, 879.2 )
-rotation = 1.5708
+rotation = 1.45483
 rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = 0.429016
+rotation = 0.376557
 rotation_type = "HalfRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4646.35, 386 )
-rotation = 0.429016
+rotation = 0.376557
 rotation_type = "HalfRotation"
 offset = 407
 speed = 0.6
 
 [node name="PendulumSaw10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4059.35, 538 )
-rotation = -0.348502
+rotation = -0.545115
 rotation_type = "HalfRotation"
 offset = 407
 speed = 0.33
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5144.35, 613 )
-rotation = 1.51175
+rotation = 0.698425
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = -0.6376
+rotation = -2.93293
 rotation_type = "FullRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw18" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7599.15, 797.8 )
-rotation = -2.94075
+rotation = 1.55562
 rotation_type = "HalfRotation"
 offset = 552
 speed = 0.7
 
 [node name="PendulumSaw12" parent="." instance=ExtResource( 4 )]
 position = Vector2( 8872.15, 21.8 )
-rotation = -0.127647
+rotation = -0.801817
 rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw13" parent="." instance=ExtResource( 4 )]
 position = Vector2( 9841.15, 902.8 )
-rotation = -1.38938
+rotation = -4.70101
 rotation_type = "FullRotation"
 offset = 268
 speed = 0.7
 
 [node name="PendulumSaw14" parent="." instance=ExtResource( 4 )]
 position = Vector2( 10404.2, 541.8 )
-rotation = -1.26733
+rotation = -0.7302
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.253
 
 [node name="PendulumSaw15" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11281.1, 659.8 )
-rotation = -3.9092
+rotation = -2.83778
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.2
 
 [node name="PendulumSaw16" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11281.1, 659.8 )
-rotation = -1.47527
+rotation = -3.72208
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.3
 
 [node name="PendulumSaw17" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11279.2, 658.8 )
-rotation = -0.172774
+rotation = -1.95402
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.1
 
 [node name="PendulumSaw11" parent="." instance=ExtResource( 4 )]
 position = Vector2( 6651.15, 789.8 )
-rotation = 1.5708
+rotation = -1.06963
 rotation_type = "FullRotation"
 offset = 99
 speed = 1.0
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1461.34, 707 )
-rotation = 0.429016
+rotation = 0.376557
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.6
 
 [node name="PendulumSaw9" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2919.34, 64 )
-rotation = 0.29842
+rotation = 0.376557
 rotation_type = "HalfRotation"
 offset = 196
 speed = 0.6
 
 [node name="PendulumSaw7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1370.34, 168 )
-rotation = 0.965641
+rotation = -2.04863
 rotation_type = "FullRotation"
 offset = 360
 speed = 0.4
 
 [node name="PendulumSaw8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2283.34, 335 )
-rotation = 0.725628
+rotation = -2.96403
 rotation_type = "FullRotation"
 offset = 360
 speed = 0.532
