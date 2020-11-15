@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal scene_changed()
 
-func change_scene(scene: PackedScene, delay: int = 0.5, speed: int = 2) -> void:
+func change_scene(scene: PackedScene, delay: float = 0.5, speed: int = 2) -> void:
 	$AnimationPlayer.playback_speed = speed
 	yield(get_tree().create_timer(delay), "timeout")
 	$AnimationPlayer.play("FadeToBlack")

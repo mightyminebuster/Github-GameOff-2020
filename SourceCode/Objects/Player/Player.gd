@@ -43,6 +43,7 @@ var is_double_jumped: bool = false
 var jumping_states: Array = ["jump", "double_jump"]
 
 #Grapple
+var shoot_dump: Array
 var target
 var grapple_velocity: Vector2 = Vector2.ZERO
 
@@ -113,6 +114,7 @@ func jump(height : int) -> void:
 
 #Define state functions below
 func idle_enter_logic() -> void:
+	current_speed = 0
 	velocity.x = 0
 
 func idle_logic(_delta : float) -> void:
@@ -243,16 +245,21 @@ func grapple_enter_logic() -> void:
 		else:
 			set_state("fall")
 	else:
-		target = $GrappleHook.shoot()
+		shoot_dump = $GrappleHook.shoot()
+		target = shoot_dump[0]
+		if typeof(shoot_dump[1]) == TYPE_VECTOR2:
+			yield(get_tree().create_timer(1), "timeout")
 	
 
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
 		set_state("fall")
-	if target == null && $GrappleHook.tip == $GrappleHook.tip_target:
+	if typeof(target) != TYPE_VECTOR2 && $GrappleHook.tip == $GrappleHook.tip_target:
+		if shoot_dump[1] == 1:
+			camera.shake(10, 10)
 		set_state("fall")
 	
-	if target != null && $GrappleHook.tip == $GrappleHook.tip_target:
+	if typeof(target) == TYPE_VECTOR2 && $GrappleHook.tip == $GrappleHook.tip_target:
 		grapple_velocity = (target - position).normalized() * $GrappleHook.pull
 		
 		if grapple_velocity.y > 0:

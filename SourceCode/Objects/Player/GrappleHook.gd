@@ -24,18 +24,22 @@ func shoot():
 	
 	if $RayCast2D.is_colliding():
 		if $RayCast2D.get_collider().collision_layer == 1:
-			camera.shake(20, 10) #Shake Camer
 			tip_target = $RayCast2D.get_collision_point()
 			
+			var r: Array = [null, 1]
+			return r
+			
 		elif $RayCast2D.get_collider().collision_layer == 2:
-			camera.shake(20, 5)
+			
 			tip_target = $RayCast2D.get_collision_point()
-			return $RayCast2D.get_collision_point()
+			
+			var r: Array = [$RayCast2D.get_collision_point(), 2]
+			return r
 	else:
 		tip_target = $RayCast2D.cast_to + global_position
 		
-		print(tip_target, "  ", $RayCast2D.cast_to)
-	return null
+		var r: Array = [null, 0]
+		return r
 
 func release() -> void:
 	tip = get_parent().find_node("AimingHint").global_position #set tips resting position
