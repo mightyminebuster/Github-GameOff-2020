@@ -50,137 +50,137 @@ target_path = NodePath("../Player")
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1678.17, 735.2 )
-rotation = 1.5708
+rotation = -0.682951
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5237.75, 52.8 )
-rotation = 0.239345
+rotation = 1.5708
 rotation_type = "FullRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3715.35, 355 )
-rotation = 0.744237
+rotation = 0.432785
 offset = 501
 speed = 0.508
 
 [node name="PendulumSaw10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2998.35, 422 )
-rotation = 0.332548
+rotation = -0.623493
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.33
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4886.35, 65.0001 )
-rotation = 0.848711
+rotation = -0.904913
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7502.15, 340.8 )
-rotation = -2.87423
+rotation = -0.832651
 rotation_type = "FullRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw18" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7503.15, 340.8 )
-rotation = 1.5708
+rotation = -0.909406
 offset = 552
 speed = 0.5
 
 [node name="PendulumSaw12" parent="." instance=ExtResource( 4 )]
 position = Vector2( 8789.15, 17.8 )
-rotation = -0.880081
+rotation = -0.586603
 rotation_type = "FullRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw20" parent="." instance=ExtResource( 4 )]
 position = Vector2( 10343.2, 90.8 )
-rotation = -1.26258
+rotation = -0.204158
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw13" parent="." instance=ExtResource( 4 )]
 position = Vector2( 12735.2, 1086.8 )
-rotation = -4.59562
+rotation = -2.99264
 rotation_type = "FullRotation"
 offset = 268
 speed = 0.7
 
 [node name="PendulumSaw14" parent="." instance=ExtResource( 4 )]
 position = Vector2( 10163.2, 21.7999 )
-rotation = -2.92771
+rotation = -3.38315
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.253
 
 [node name="PendulumSaw15" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11196.1, 598.8 )
-rotation = -2.59647
+rotation = 1.05316
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.2
 
 [node name="PendulumSaw16" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11397.1, 605.8 )
-rotation = -3.47806
+rotation = -3.19209
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.3
 
 [node name="PendulumSaw17" parent="." instance=ExtResource( 4 )]
 position = Vector2( 11303.2, 604.8 )
-rotation = -1.75739
+rotation = -1.03424
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.1
 
 [node name="PendulumSaw11" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5400.35, 940.8 )
-rotation = -0.872604
+rotation = -3.0654
 rotation_type = "FullRotation"
 offset = 99
 
 [node name="PendulumSaw21" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4884.15, 939.8 )
-rotation = -1.0407
+rotation = -3.23347
 rotation_type = "FullRotation"
 offset = 99
 
 [node name="PendulumSaw19" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7485.15, 1054.8 )
-rotation = 0.925566
+rotation = -3.60746
 rotation_type = "FullRotation"
 offset = 99
 speed = 0.92
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1672.94, 738 )
-rotation = 0.239345
+rotation = 1.5708
 offset = 360
 speed = 0.6
 
 [node name="PendulumSaw9" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2953.34, 312 )
-rotation = 0.239345
+rotation = 1.5708
 offset = 196
 speed = 0.6
 
 [node name="PendulumSaw7" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2216.34, 211 )
-rotation = -1.99219
+rotation = -2.86856
 offset = 360
 speed = 0.4
 
 [node name="PendulumSaw8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 616.34, 212 )
-rotation = -2.79329
+rotation = -3.08933
 offset = 192
 speed = 0.85
