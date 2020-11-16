@@ -14,9 +14,11 @@ var offset_shake: float = 0  #how much the camera shakes at the begining of the 
 var offset_shake_remaining: float = 0  #how much it shakes now
 
 func _ready() -> void:
-	randomize()
+	smoothing_enabled = false #set position to check point position without smoothing
+	position = Globals.player_default_position 
+	smoothing_enabled = true
 	
-	shake(10, 10)
+	randomize()
 
 func _process(delta : float) -> void:
 	position = get_node(target_path).position

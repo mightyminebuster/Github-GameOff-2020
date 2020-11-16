@@ -56,6 +56,8 @@ func _on_PlayerHitbox_area_entered(area):
 func _on_PlayerHitbox_body_entered(body):
 	set_state("die")
 
+func _ready():
+	position = Globals.player_default_position
 
 func _physics_process(delta : float) -> void:
 	print(velocity)
