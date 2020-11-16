@@ -60,7 +60,6 @@ func _ready():
 	position = Globals.player_default_position
 
 func _physics_process(delta : float) -> void:
-	print(velocity)
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
 	
@@ -289,7 +288,7 @@ func die_enter_logic() -> void:
 func die_logic(_delta : float) -> void:
 	if !has_animation_started:
 		has_animation_started = true
-		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 0, 4)
+		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 4)
 
 func die_exit_logic() -> void:
 	pass

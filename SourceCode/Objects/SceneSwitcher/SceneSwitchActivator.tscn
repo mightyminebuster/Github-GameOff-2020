@@ -3,10 +3,11 @@
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 48.0
-height = 96.0
+radius = 144.931
+height = 667.781
 
 [node name="SceneSwitchActivator" type="Area2D"]
+collision_mask = 8
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

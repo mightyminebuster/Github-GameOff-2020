@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Pickups/GrapplePickup/GrapplePickup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Rooms/Level-Industrial-1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=7]
 
 [node name="Level-Jail" type="Node2D"]
 
@@ -36,3 +38,7 @@ limit_bottom = 1080
 target_path = NodePath("../../Level-Jail/Player")
 
 [node name="GrapplePickup" parent="." instance=ExtResource( 4 )]
+
+[node name="SceneSwitchActivator" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1791.97, 599.323 )
+new_scene = ExtResource( 6 )
