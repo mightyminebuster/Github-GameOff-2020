@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Pickups/CheckPoint/CheckPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
@@ -101,3 +102,6 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 1080
 target_path = NodePath("../../Level-Jail/Player")
+
+[node name="CheckPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4119.8, 323.454 )

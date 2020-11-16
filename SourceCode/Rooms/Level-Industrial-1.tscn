@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Objects/Obstacles/PendulumSaw/PendulumSaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Pickups/GrapplePickup/GrapplePickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Pickups/CheckPoint/CheckPoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
 [node name="Level-Industrial-1" type="Node2D"]
@@ -47,42 +48,40 @@ target_path = NodePath("../../Level-Industrial-1/Player")
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1450.17, 494.2 )
-rotation = 1.4582
-rotation_type = "HalfRotation"
+rotation = 1.5708
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = -0.574445
-rotation_type = "HalfRotation"
+rotation = 1.5708
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -0.574445
-rotation_type = "HalfRotation"
+rotation = 1.5708
 offset = 407
 speed = 0.6
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -4.62794
+rotation = 0.800816
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = -1.5708
-rotation_type = "HalfRotation"
+rotation = 1.5708
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1461.34, 708 )
-rotation = -0.574445
-rotation_type = "HalfRotation"
+rotation = 1.5708
 offset = 360
 speed = 0.6
+
+[node name="CheckPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 6086.43, 293.428 )
