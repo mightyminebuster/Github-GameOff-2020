@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
-[node name="Level-Jail" type="Node2D"]
+[node name="Level-Jail-2" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 

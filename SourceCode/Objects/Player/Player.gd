@@ -56,6 +56,7 @@ func _on_PlayerHitbox_area_entered(area):
 func _on_PlayerHitbox_body_entered(body):
 	set_state("die")
 
+
 func _physics_process(delta : float) -> void:
 	print(velocity)
 	if Input.is_action_just_pressed("ui_right"):
@@ -267,7 +268,7 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 0.55
 		else:
 			# Pulling up is stronger
-			grapple_velocity.y *= 1.5
+			grapple_velocity.y *= 1.2
 		
 		if sign(grapple_velocity.x) == direction_facing:
 			grapple_velocity.x *= 1.25

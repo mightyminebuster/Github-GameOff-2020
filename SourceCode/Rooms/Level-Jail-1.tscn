@@ -7,7 +7,7 @@
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
 
-[node name="Level-Jail" type="Node2D"]
+[node name="Level-Jail-1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -94,4 +94,4 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../../Level-Jail/Player")
+target_path = NodePath("../Player")
