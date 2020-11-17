@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://Objects/Pickups/CheckPoint/CheckPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://RoomAssets/Jail/Jail-1/Paralax2.png" type="Texture" id=7]
+[ext_resource path="res://RoomAssets/Jail/Jail-1/Background1.png" type="Texture" id=7]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
-[ext_resource path="res://RoomAssets/Jail/Jail-1/Paralax1.png" type="Texture" id=9]
+[ext_resource path="res://RoomAssets/Jail/Jail-1/Background2.png" type="Texture" id=9]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Rooms/Level-Jail-2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://RoomAssets/Jail/Jail-1/WallOverlay.png" type="Texture" id=12]
 
 [node name="Level-Jail-1" type="Node2D"]
 
@@ -23,6 +24,9 @@ margin_right = 12972.0
 margin_bottom = 1091.0
 texture = ExtResource( 7 )
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background2" type="TextureRect" parent="Background"]
 margin_left = -30.0
@@ -53,12 +57,19 @@ tile_data = PoolIntArray( 114, 0, 0, 115, 0, 0, 116, 0, 0, 117, 0, 0, 118, 0, 0,
 [node name="DieTiles" parent="." instance=ExtResource( 8 )]
 tile_data = PoolIntArray( 721105, 0, 0, 786490, 0, 0, 786491, 0, 0, 786492, 0, 0, 786493, 0, 0, 786494, 0, 0, 786495, 0, 0, 786496, 0, 0, 786497, 0, 0, 786641, 0, 0, 852177, 0, 0, 852293, 0, 0, 917713, 0, 0, 917829, 0, 0, 983249, 0, 0, 983365, 0, 0, 1048785, 0, 0, 1048901, 0, 0, 1114321, 0, 0, 1114437, 0, 0, 1179857, 0, 0, 1245393, 0, 0, 1310929, 0, 0, 1376465, 0, 0, 1442001, 0, 0, 1442033, 0, 0, 1442034, 0, 0, 1442035, 0, 0, 1442036, 0, 0, 1442037, 0, 0, 1442038, 0, 0, 1442039, 0, 0, 1442040, 0, 0, 1507537, 0, 0, 1507643, 0, 0, 1507644, 0, 0, 1507645, 0, 0, 1507646, 0, 0, 1507647, 0, 0, 1573073, 0, 0, 1638609, 0, 0, 1704145, 0, 0, 1769681, 0, 0, 1835217, 0, 0, 1900753, 0, 0, 1966187, 0, 0, 1966188, 0, 0, 1966189, 0, 0, 1966190, 0, 0, 1966191, 0, 0, 1966192, 0, 0, 1966193, 0, 0, 1966194, 0, 0, 1966195, 0, 0, 1966196, 0, 0, 1966197, 0, 0, 1966198, 0, 0, 1966199, 0, 0, 1966200, 0, 0, 1966201, 0, 0, 1966202, 0, 0, 1966203, 0, 0, 1966204, 0, 0, 1966205, 0, 0, 1966206, 0, 0, 1966210, 0, 0, 1966211, 0, 0, 1966212, 0, 0, 1966213, 0, 0, 1966214, 0, 0, 1966215, 0, 0, 1966216, 0, 0, 1966217, 0, 0, 1966218, 0, 0, 1966219, 0, 0, 1966220, 0, 0, 1966221, 0, 0, 1966222, 0, 0, 1966223, 0, 0, 1966224, 0, 0, 1966225, 0, 0, 1966226, 0, 0, 1966227, 0, 0, 1966228, 0, 0, 1966289, 0, 0, 2031825, 0, 0, 2031838, 0, 0, 2031839, 0, 0, 2031840, 0, 0, 2031841, 0, 0, 2031842, 0, 0, 2031843, 0, 0, 2031844, 0, 0, 2031845, 0, 0, 2031846, 0, 0, 2031847, 0, 0, 2031848, 0, 0, 2031849, 0, 0, 2031850, 0, 0, 2031851, 0, 0, 2031852, 0, 0, 2031853, 0, 0, 2031854, 0, 0, 2031855, 0, 0, 2031856, 0, 0, 2031865, 0, 0, 2031866, 0, 0, 2031867, 0, 0, 2031868, 0, 0, 2031869, 0, 0, 2031870, 0, 0, 2031871, 0, 0, 2031872, 0, 0, 2031873, 0, 0, 2031874, 0, 0, 2031875, 0, 0, 2031876, 0, 0, 2031877, 0, 0, 2031878, 0, 0, 2031879, 0, 0, 2031880, 0, 0, 2031881, 0, 0, 2031882, 0, 0, 2031883, 0, 0, 2031884, 0, 0, 2031885, 0, 0, 2031886, 0, 0, 2031887, 0, 0, 2163048, 0, 0, 2163049, 0, 0, 2163050, 0, 0, 2163051, 0, 0, 2163052, 0, 0, 2163053, 0, 0, 2163054, 0, 0, 2163055, 0, 0, 2163056, 0, 0, 2163057, 0, 0, 2163058, 0, 0, 2163059, 0, 0, 2163060, 0, 0, 2163061, 0, 0, 2163062, 0, 0, 2163063, 0, 0, 2163064, 0, 0, 2163065, 0, 0, 2163066, 0, 0, 2163067, 0, 0, 2163068, 0, 0, 2163069, 0, 0, 2163070, 0, 0, 2163071, 0, 0, 2163072, 0, 0, 2163073, 0, 0, 2163074, 0, 0, 2163075, 0, 0, 2163076, 0, 0, 2163077, 0, 0, 2163078, 0, 0, 2163079, 0, 0, 2163080, 0, 0, 2163081, 0, 0, 2163082, 0, 0, 2163083, 0, 0, 2163084, 0, 0, 2163085, 0, 0, 2163086, 0, 0, 2163087, 0, 0 )
 
+[node name="WallOverlay" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 12 )
+offset = Vector2( 6240, 540 )
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 10984.7, 861.144 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 10 )]
 position = Vector2( 12903.3, 516.583 )
 new_scene = ExtResource( 11 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+current = true
 
 [node name="Pickups" type="Node2D" parent="."]
 
@@ -120,13 +131,3 @@ position = Vector2( 8662.46, 426.6 )
 rotation = 0.663225
 scale = Vector2( 1.471, 2.392 )
 speed = 0.21
-
-[node name="Camera2D" parent="." instance=ExtResource( 3 )]
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 12958
-limit_bottom = 1080
-limit_smoothed = true
-editor_draw_limits = true
-target_path = NodePath("../Player")

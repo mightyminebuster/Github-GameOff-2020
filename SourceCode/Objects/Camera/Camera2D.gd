@@ -1,6 +1,6 @@
 extends Camera2D
 
-export (NodePath) var target_path
+onready var target = get_parent().find_node("Player")
 
 var shake_length: int = 0 # How quickly the shaking stops [0, 1].
 
@@ -21,7 +21,7 @@ func _ready() -> void:
 	randomize()
 
 func _process(delta : float) -> void:
-	position = get_node(target_path).position
+	position = target.position
 	
 	if offset_shake_remaining > 0:
 		offset = Vector2(rand_range(offset_shake_remaining, -offset_shake_remaining), rand_range(offset_shake_remaining, -offset_shake_remaining))

@@ -1,46 +1,55 @@
 extends KinematicBody2D
 
+#State Vars
+var states: Array = ["idle", "run", "fall", "jump", "double_jump"] #list of all states
+var current_state: String = states[0] #what state's logic is being called every frame
+var previous_state: String #last state that was being calles
 
-#State Machine
-var states: Array = ["idle", "run", "fall", "jump", "die"]
-var current_state: String = states[0]
-var previous_state: String
-var state_origin: Object = self #where is the state defined
+#Nodes & paths
+onready var camera: Camera2D = get_parent().find_node("Camera2D")
+onready var player_sprite: Sprite = $PlayerSprite #path to the player's sprite
 
-#Node Refrences
-onready var camera = get_parent().find_node("Camera2D")
+#Squash & Stretch
+var recovery_speed: float = 0.03 #how fast you recover from squashes, and stretches
 
-#Input	
-var movement_direction: float = 0
-var direction_facing: int = 1
+var landing_squash: float = 1.5 #x scale of PlayerSprite when you land
+var landing_stretch: float = 0.5 #y scale of PlayerSprite when you land
 
-#General
-var velocity: Vector2 = Vector2.ZERO
+var jumping_squash: float = 0.5 #x scale of PlayerSprite when you jump
+var jumping_stretch: float = 1.5 #y scale of PlayerSprite when you jump
 
-var turn_animation_speed: float = 0.24
+#Input Vars
+var direction_moving: int = 0 #will be 1, -1, 0 depending on if you are holding right, left, or nothing
+var direction_facing: int = 1 #last direction pressed that is not 0
 
-#Horizontal Movement
-var current_speed: float = 0
-var running_velocity: float 
-var move_horizontally_states: Array = ["run", "fall", "jump", "double_jump"]
+#Movement Vars
+var terminal_velocity: float = 1000
+var velocity: Vector2 = Vector2.ZERO #linear velocity applied to move and slide
 
-const max_speed: int = 400
-const acceleration: int = 60
-const decceleration: int = 100
+var current_speed: int = 0 #how much you add to x velocity when moving horizontally
+var max_speed: int = 400 #maximum current speed can reach when moving horizontally
+var acceleration: int = 60 #by how much does current speed approach max speed when moving
+var decceleration: int = 200 #by how much does velocity approach when you stop moving horizontally
+var air_friction: int = 150 #how much you subtract velocity when you start moving horizontally in the air
 
-#Aerial Movement
-const gravity: int = 1700
-const air_friction: int = 75
-const gravity_exemption_states: Array = ["die", "dash"]
-const terminal_velocity: int = 1000
+var move_horizontally_states: Array = ["run", "jump", "fall", "double_jump"]
+var running_velocity: float = 0
 
-#Jump / Double Jump
-const jump_height: int = 192
-const double_jump_height: int = 128
+#fall
+var gravity: int = 1700 #how much is added to y velocity constantly
 
-var is_double_jumped: bool = false
+var jump_buffer_start_time: int  = 0 #ticks when you ran of the platform
+var elapsed_jump_buffer: int = 0 #how many seconds passed in the jump nuffer
+var jump_buffer: int = 100 #how many miliseconds allowance you give jumps after you run of an edge
 
-var jumping_states: Array = ["jump", "double_jump"]
+
+#jump
+var jump_height: int = 192  #How high the peak of the jump is in pixels
+
+#double jump
+var double_jump_height: int = 128 #How high the peak of the double jump is in pixels
+
+var has_double_jumped: bool = false #if you have double jumped
 
 #Grapple
 var shoot_dump: Array
@@ -59,189 +68,225 @@ func _on_PlayerHitbox_body_entered(body):
 func _ready():
 	position = Globals.player_default_position
 
-func _physics_process(delta : float) -> void:
-	if Input.is_action_just_pressed("ui_right"):
-		set_state("die")
-	
-	state_origin.call(current_state + "_logic", delta)
+func _physics_process(delta):
+	print(current_state)
+
 	get_input()
+	
+	apply_gravity(delta)
+	
+	call(current_state + "_logic", delta) #call the current states main method
+	
 	velocity = velocity.clamped(terminal_velocity)
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP) #aply velocity to movement
 	if current_state in move_horizontally_states:
 		if direction_facing == 1 && running_velocity < velocity.x || direction_facing == -1 && running_velocity > velocity.x:
 			velocity.x -= running_velocity
 	
-	apply_gravity(delta)
-	flip_sprite()
-
-func get_input() -> void:
-	movement_direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	recover_sprite_scale()
 	
-	if movement_direction != 0:
-		direction_facing = int(movement_direction)
+	player_sprite.flip_h = direction_facing - 1 #flip sprite depending on which direction you last moved in
 
-func apply_gravity(delta : float):
-	if current_state in gravity_exemption_states:
-		pass
-	else:
-		velocity.y += gravity * delta #idk why I apply delta here cause move and slide applies delta but it works and im not questioning it
+func get_input():
+	#set input vars
+	direction_moving = Input.get_action_strength("move_right") - Input.get_action_strength("move_left") #set movement input to 1,-1, or 0
+	if direction_moving != 0:
+		direction_facing = direction_moving #set last direction if movement input isnt 0
 
-func flip_sprite() -> void:
-	$PlayerSprite.scale.x = move_toward($PlayerSprite.scale.x, direction_facing, turn_animation_speed)
+func apply_gravity(delta):
+	#apply gravity in every state except dash
+	velocity.y += gravity * delta
 
+func recover_sprite_scale():
+	#make sprite scale approach 0
+	player_sprite.scale.x = move_toward(player_sprite.scale.x, 1, recovery_speed)
+	player_sprite.scale.y = move_toward(player_sprite.scale.y, 1, recovery_speed)
 
-#Common Functions
-func set_state(new_state : String, state_originator: Object = self) -> void:
-	#change state values
+func set_state(new_state : String):
+	#update state values
 	previous_state = current_state
 	current_state = new_state
-	state_origin = state_originator
 	
-	#call methods
+	#call enter/exit methods
 	if previous_state != null:
-		state_origin.call(previous_state + "_exit_logic")
+		call(previous_state + "_exit_logic")
 	if current_state != null:
-		state_origin.call(current_state + "_enter_logic")
+		call(current_state + "_enter_logic")
 
-func move_horizontally(subtrahend : int) -> void:
-	current_speed = move_toward(current_speed, max_speed - subtrahend, acceleration)
-	running_velocity = current_speed * movement_direction
+
+
+#Functions used across multiple states
+func move_horizontally(subtractor):
+	current_speed = move_toward(current_speed, max_speed, acceleration) #accelerate current speed
+	
+	running_velocity = current_speed * direction_moving #apply curent speed to velocity and multiply by direction
+	running_velocity = clamp(running_velocity, -max_speed, max_speed)
 	velocity.x += running_velocity
 
+func squash_stretch(squash, stretch):
+	#set Sprite scale to squash and stretch
+	player_sprite.scale.x = squash
+	player_sprite.scale.y = stretch
 
-func jump(height : int) -> void:
-	var jump_velocity: float = -sqrt(2 * gravity * height) #define what velocity we would have to jump at to make the apex of our jump equal to jump height
-	velocity.y = jump_velocity #apply that velocity to velocity
+func jump(jump_height):
+	velocity.y = 0 #reset velocity
+	velocity.y = -sqrt(2 * gravity * jump_height) #apply velocity
+	
+	squash_stretch(jumping_squash, jumping_stretch) #set squaash and stretch
 
+#State Functions
 
-#Define state functions below
-func idle_enter_logic() -> void:
-	current_speed = 0
-	velocity.x = 0
+func idle_enter_logic():
+	pass
 
-func idle_logic(_delta : float) -> void:
-	#Exit State
-	if movement_direction != 0:
+func idle_logic(delta):
+	if Input.is_action_just_pressed("jump"):
+		#jump if you press button
+		set_state("jump")
+	
+	if Input.is_action_just_pressed("shoot"):
+		#enter the grapple state if you press the button
+		set_state("grapple")
+		
+	
+	if direction_moving != 0:
+		#start running if you press a movement button
 		set_state("run")
+	velocity.x = move_toward(velocity.x, 0, decceleration) #deccelerate
+
+
+func idle_exit_logic():
+	current_speed = 0 #reset current speed (we do this here to keep momentum on run jumps)
 	
+
+
+func run_enter_logic():
+	current_speed = 0 #reset current speed (we do this here to keep momentum on run jumps)
+
+func run_logic(delta):
 	if Input.is_action_just_pressed("jump"):
+		#jump if you press the jump button
 		set_state("jump")
-	
+		
 	if Input.is_action_just_pressed("shoot"):
+		#enter the grapple state if you press the button
 		set_state("grapple")
 
-func idle_exit_logic() -> void:
-	current_speed = 0 #we reset current speed here to maintain momentum on run-up jumps 
-
-
-
-func run_enter_logic() -> void:
-	pass
-
-func run_logic(_delta : float) -> void:
-	move_horizontally(0)
-	
-	#Exit State
-	if movement_direction == 0:
-		set_state("idle")
-	
 	if !is_on_floor():
+		#if your not on a floor, start falling and set jumpbuffer start time
+		jump_buffer_start_time = OS.get_ticks_msec()
 		set_state("fall")
-	
-	if Input.is_action_just_pressed("jump"):
-		set_state("jump")
 		
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
+	
+	if direction_moving == 0:
+		#if your not pressing a move button go idle
+		set_state("idle")
+	else:
+		#if pressing move button start moving
+		move_horizontally(0)
+	
+func run_exit_logic():
+	running_velocity = 0
 
-func run_exit_logic() -> void:
-	pass 
 
 
-
-func fall_enter_logic() -> void:
+func fall_enter_logic():
+	#Anim.play("Fall") #play the fall animation
 	pass
 
-func fall_logic(_delta : float) -> void:
-	move_horizontally(air_friction)
-
-	if Input.is_action_just_pressed("jump") && !is_double_jumped:
-		set_state("double_jump")
+func fall_logic(delta):
+	move_horizontally(air_friction) #move horizontally
+	elapsed_jump_buffer = OS.get_ticks_msec() - jump_buffer_start_time #set elapsed time for jump buffer
+	
+	if Input.is_action_just_pressed("jump"):
+		#if you press jump
+		if !has_double_jumped && elapsed_jump_buffer > jump_buffer:
+			#and jump is pressed outside the jump buffer window, and this is your first double jump
+			set_state("double_jump") #set state to double jump
 		
+		if elapsed_jump_buffer < jump_buffer:
+			#if your in the jump buffer window
+			if previous_state == "run":
+				#and your previpus state is run
+				set_state("jump") #set state to jump
+	
 	if Input.is_action_just_pressed("shoot"):
+		#enter the grapple state if you press the button
 		set_state("grapple")
 	
-	#Exit States
 	if is_on_floor():
-		set_state("idle") 
-		is_double_jumped = false #reset
+		#if player is on a floor
+		set_state("run") #set state to run (we set to run to keep momentum)
+		has_double_jumped = false #reset is double jumped
+		
+		squash_stretch(landing_squash, landing_stretch) #apply squash and stretch
 
-func fall_exit_logic() -> void:
-	pass 
+
+func fall_exit_logic():
+	jump_buffer_start_time = 0 #reset jump buffer start time
 
 
 
-func jump_enter_logic() -> void:
-	jump(jump_height) #set y velocity
+func jump_enter_logic():
+	jump(jump_height)
 
-	if previous_state == "dash":
-		set_state("fall")
-
-func jump_logic(_delta : float) -> void:
-	move_horizontally(air_friction)
+func jump_logic(delta):
+	move_horizontally(air_friction) #move horizontally and subtract airfriction from max speed
 	
 	if Input.is_action_just_pressed("shoot"):
+		#enter the grapple state if you press the button
 		set_state("grapple")
 	
-	#Exit State
-	if velocity.y > 0:
-		#switch state to fall if velocity is positive
-		set_state("fall")
+	if velocity.y < 0:
+		#if you are rising
+		if Input.is_action_just_released("jump"):
+			#and you release jump button
+			velocity.y /= 2 #lower velocity
+			
+		if Input.is_action_just_pressed("jump") && !has_double_jumped:
+			#if its your first time double jumping
+			set_state("double_jump") #set state to double jump
 
-	if is_on_ceiling():
-		#switch state to fall if you bonk the ceiling
-		set_state("fall")
+		if is_on_ceiling():
+			#if you hit a ceiling
+			set_state("fall") #start falling
+	else:
+		#if you are no longer rising
+		set_state("fall") #fall
 	
-	if Input.is_action_just_released("jump"):
-		#cut ascent in half if jump button is released
-		velocity.y /= 4
-
-func jump_exit_logic() -> void:
-	pass 
+func jump_exit_logic():
+	pass
 
 
 
-func double_jump_enter_logic() -> void:
-	is_double_jumped = true
+func double_jump_enter_logic():
 	jump(double_jump_height)
+	has_double_jumped = true #make sure you can only double jump once
 
-func double_jump_logic(_delta : float) -> void:
-	move_horizontally(air_friction)
-	
-	if Input.is_action_just_pressed("shoot"):
-		set_state("grapple")
-	
-	#Exit State
-	if velocity.y > 0:
-		#switch state to fall if velocity is positive
-		set_state("fall")
+func double_jump_logic(delta):
+	move_horizontally(air_friction) #move horizontally and subtract airfriction from max speed
+		
+	if velocity.y < 0:
+		#if you are rising
+		if Input.is_action_just_released("jump"):
+			#and you release jump button lower velocity
+			velocity.y /= 2
+		
+		if is_on_ceiling():
+			#and you hit a ceiling 
+			set_state("fall") #fall
+	else:
+		#if you are no longer rising
+		set_state("fall") #fall
 
-	if is_on_ceiling():
-		#switch state to fall if you bonk the ceiling
-		set_state("fall")
-	
-	if Input.is_action_just_released("jump"):
-		#cut ascent in quarter if jump button is released
-		velocity.y /= 4
-
-func double_jump_exit_logic() -> void:
-	pass 
+func double_jump_exit_logic():
+	pass
 
 
 
 func grapple_enter_logic() -> void:
 	if Globals.has_grappling_hook == false:
-		#dont grapple if dont have it
+		#dont grapple if dont have the hook
 		if previous_state != "jump" && previous_state != "double_jump":
 			set_state(previous_state)
 		else:
@@ -249,9 +294,6 @@ func grapple_enter_logic() -> void:
 	else:
 		shoot_dump = $GrappleHook.shoot()
 		target = shoot_dump[0]
-		if typeof(shoot_dump[1]) == TYPE_VECTOR2:
-			yield(get_tree().create_timer(1), "timeout")
-	
 
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
@@ -272,7 +314,7 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 1.2
 		
 		if sign(grapple_velocity.x) == direction_facing:
-			grapple_velocity.x *= 1.25
+			pass
 		else:
 			grapple_velocity.x *= 0.75
 		velocity += grapple_velocity

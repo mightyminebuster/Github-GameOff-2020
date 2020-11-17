@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Paralax1.png-7f679b7019d1578949fdf14b9bb34326.stex"
+path="res://.import/WallOverlay.png-512a7ced6f634ff63eb251eecae0b4bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RoomAssets/Jail/Jail-1/Paralax1.png"
-dest_files=[ "res://.import/Paralax1.png-7f679b7019d1578949fdf14b9bb34326.stex" ]
+source_file="res://RoomAssets/Jail/Jail-1/WallOverlay.png"
+dest_files=[ "res://.import/WallOverlay.png-512a7ced6f634ff63eb251eecae0b4bf.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

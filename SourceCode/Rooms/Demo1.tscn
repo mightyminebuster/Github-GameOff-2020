@@ -5,10 +5,10 @@
 [ext_resource path="res://Objects/Camera/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Objects/Pickups/GrapplePickup/GrapplePickup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Rooms/Level-Industrial-1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Rooms/Level-Jail-1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=7]
 
-[node name="Level-Jail" type="Node2D"]
+[node name="Demo1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -35,7 +35,6 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../../Level-Jail/Player")
 
 [node name="GrapplePickup" parent="." instance=ExtResource( 4 )]
 
