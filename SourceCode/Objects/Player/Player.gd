@@ -77,11 +77,15 @@ func _physics_process(delta):
 	
 	call(current_state + "_logic", delta) #call the current states main method
 	
+	
+	
 	velocity = velocity.clamped(terminal_velocity)
 	velocity = move_and_slide(velocity, Vector2.UP) #aply velocity to movement
-	if current_state in move_horizontally_states:
-		if direction_facing == 1 && running_velocity < velocity.x || direction_facing == -1 && running_velocity > velocity.x:
-			velocity.x -= running_velocity
+	
+	if current_state in move_horizontally_states && sign(velocity.x - running_velocity) == direction_moving:
+		velocity.x -= running_velocity
+	else:
+		running_velocity= 0
 	
 	recover_sprite_scale()
 	

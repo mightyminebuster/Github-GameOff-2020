@@ -59,6 +59,7 @@ tile_data = PoolIntArray( 721105, 0, 0, 786490, 0, 0, 786491, 0, 0, 786492, 0, 0
 
 [node name="WallOverlay" type="Sprite" parent="."]
 visible = false
+position = Vector2( 365.879, -8.11182 )
 texture = ExtResource( 12 )
 offset = Vector2( 6240, 540 )
 
