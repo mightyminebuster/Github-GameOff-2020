@@ -42,44 +42,48 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../../Level-Industrial-1/Player")
 
 [node name="Obstacles" type="Node2D" parent="Camera2D"]
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1450.17, 494.2 )
-rotation = 1.5708
+rotation = 0.404838
+rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = 1.5708
+rotation = 1.36399
+rotation_type = "HalfRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = 1.5708
+rotation = 1.36399
+rotation_type = "HalfRotation"
 offset = 407
 speed = 0.6
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = 0.800816
+rotation = -3.83792
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = 1.5708
+rotation = -0.153922
+rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1461.34, 708 )
-rotation = 1.5708
+rotation = 1.36399
+rotation_type = "HalfRotation"
 offset = 360
 speed = 0.6
 
