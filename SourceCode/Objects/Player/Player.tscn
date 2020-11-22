@@ -1,18 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Objects/Player/GrappleHook.gd" type="Script" id=1]
 [ext_resource path="res://PlaceholderTexture.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Player/AimingHint.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 32.0
 height = 0.0
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
 
 [node name="Player" type="KinematicBody2D"]
+material = SubResource( 1 )
 collision_layer = 2147483652
 collision_mask = 3
 script = ExtResource( 3 )
@@ -29,7 +33,7 @@ collision_layer = 2147483656
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="GrappleLine" type="Line2D" parent="."]
 visible = false
@@ -59,6 +63,6 @@ texture = ExtResource( 2 )
 script = ExtResource( 4 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource( 2 )
+occluder = SubResource( 3 )
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_area_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]

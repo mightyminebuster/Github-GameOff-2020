@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "loop"
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 3
+
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
@@ -20,6 +22,7 @@ tracks/0/keys = {
 }
 
 [node name="SecurityCamera" type="Position2D"]
+material = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_gizmo_extents_": 30.0
@@ -63,4 +66,4 @@ shadow_enabled = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RotationFix"]
 autoplay = "loop"
 playback_speed = 0.16
-anims/loop = SubResource( 1 )
+anims/loop = SubResource( 2 )

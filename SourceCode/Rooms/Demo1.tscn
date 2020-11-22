@@ -29,6 +29,7 @@ tile_data = PoolIntArray( 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 
 tile_data = PoolIntArray( 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 500, 0 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 current = true
@@ -37,6 +38,7 @@ limit_top = 0
 limit_bottom = 1080
 
 [node name="GrapplePickup" parent="." instance=ExtResource( 4 )]
+position = Vector2( 500, 0 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1791.97, 599.323 )

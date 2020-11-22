@@ -27,7 +27,7 @@ var terminal_velocity: float = 1000
 var velocity: Vector2 = Vector2.ZERO #linear velocity applied to move and slide
 
 var current_speed: int = 0 #how much you add to x velocity when moving horizontally
-var max_speed: int = 400 #maximum current speed can reach when moving horizontally
+var max_speed: int = 250 #maximum current speed can reach when moving horizontally
 var acceleration: int = 60 #by how much does current speed approach max speed when moving
 var decceleration: int = 200 #by how much does velocity approach when you stop moving horizontally
 var air_friction: int = 150 #how much you subtract velocity when you start moving horizontally in the air
@@ -69,7 +69,7 @@ func _ready():
 	position = Globals.player_default_position
 
 func _physics_process(delta):
-	print(current_state)
+	print(velocity, "  ", running_velocity)
 
 	get_input()
 	
@@ -77,16 +77,14 @@ func _physics_process(delta):
 	
 	call(current_state + "_logic", delta) #call the current states main method
 	
-	
-	
+	if abs(velocity.x) > max_speed:
+		velocity.x = max_speed * sign(velocity.x)
 	velocity = velocity.clamped(terminal_velocity)
-	velocity = move_and_slide(velocity, Vector2.UP) #aply velocity to movement
-	
-	if current_state in move_horizontally_states && sign(velocity.x - running_velocity) == direction_moving:
-		velocity.x -= running_velocity
-	else:
-		running_velocity= 0
-	
+	var f = velocity
+	f.x += running_velocity
+
+	velocity = move_and_slide(f, Vector2.UP) #aply velocity to movement
+	f = Vector2.ZERO
 	recover_sprite_scale()
 	
 	player_sprite.flip_h = direction_facing - 1 #flip sprite depending on which direction you last moved in
@@ -120,12 +118,11 @@ func set_state(new_state : String):
 
 
 #Functions used across multiple states
-func move_horizontally(subtractor):
-	current_speed = move_toward(current_speed, max_speed, acceleration) #accelerate current speed
+func move_horizontally(subtrahend):
+	current_speed = move_toward(current_speed, max_speed - subtrahend, acceleration) #accelerate current speed
 	
 	running_velocity = current_speed * direction_moving #apply curent speed to velocity and multiply by direction
 	running_velocity = clamp(running_velocity, -max_speed, max_speed)
-	velocity.x += running_velocity
 
 func squash_stretch(squash, stretch):
 	#set Sprite scale to squash and stretch
@@ -201,6 +198,8 @@ func fall_enter_logic():
 func fall_logic(delta):
 	move_horizontally(air_friction) #move horizontally
 	elapsed_jump_buffer = OS.get_ticks_msec() - jump_buffer_start_time #set elapsed time for jump buffer
+	if previous_state != "grapple" && direction_moving == 0:
+		velocity.x = 0
 	
 	if Input.is_action_just_pressed("jump"):
 		#if you press jump
@@ -338,6 +337,3 @@ func die_logic(_delta : float) -> void:
 
 func die_exit_logic() -> void:
 	pass
-
-
-
