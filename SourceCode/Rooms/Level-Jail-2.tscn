@@ -111,7 +111,6 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../../Level-Jail/Player")
 
 [node name="CheckPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5335.49, 1027.81 )

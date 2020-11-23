@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0
 
-[sub_resource type="OccluderPolygon2D" id=5]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( 28, -23.1, 28, -20.7, 32, -15.4, 32, 14.4, 27.2, 24, 25.7, 24, 15.3, 32, -15.4, 32, -28, 23, -28, 20.7, -32, 15.4, -32, -14.2, -23.1, -28, -20.6, -28, -14.2, -32, 14.2, -32 )
 
 [sub_resource type="Animation" id=3]
@@ -55,11 +55,14 @@ tracks/1/keys = {
 }
 
 [node name="PendulumSaw" type="Position2D"]
-rotation = -0.354153
+rotation = 0.510659
 script = ExtResource( 1 )
 __meta__ = {
 "_gizmo_extents_": 20.0
 }
+rotation_type = "HalfRotation"
+offset = 128
+speed = 1.0
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 0, 128 )
@@ -69,7 +72,7 @@ default_color = Color( 0.0431373, 0.0627451, 0.172549, 1 )
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, 128 )
 scale = Vector2( 2, 2 )
-collision_layer = 16
+collision_layer = 32
 __meta__ = {
 "_edit_group_": true
 }
@@ -82,7 +85,7 @@ scale = Vector2( -1, 1 )
 texture = ExtResource( 2 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Area2D"]
-occluder = SubResource( 5 )
+occluder = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "HalfRotation"

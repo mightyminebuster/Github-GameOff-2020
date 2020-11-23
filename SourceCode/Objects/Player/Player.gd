@@ -23,15 +23,16 @@ var direction_moving: int = 0 #will be 1, -1, 0 depending on if you are holding 
 var direction_facing: int = 1 #last direction pressed that is not 0
 
 #Movement Vars
-var terminal_velocity: float = 1000
+var terminal_velocity: float = 1750
 var velocity: Vector2 = Vector2.ZERO #linear velocity applied to move and slide
 
 var current_speed: int = 0 #how much you add to x velocity when moving horizontally
 var max_speed: int = 250 #maximum current speed can reach when moving horizontally
 var acceleration: int = 60 #by how much does current speed approach max speed when moving
 var decceleration: int = 200 #by how much does velocity approach when you stop moving horizontally
-var air_friction: int = 150 #how much you subtract velocity when you start moving horizontally in the air
+var air_friction: int = 100 #how much you subtract velocity when you start moving horizontally in the air
 
+var can_move_horizontally: bool = true
 var move_horizontally_states: Array = ["run", "jump", "fall", "double_jump"]
 var running_velocity: float = 0
 
@@ -44,6 +45,8 @@ var jump_buffer: int = 100 #how many miliseconds allowance you give jumps after 
 
 
 #jump
+var jump_multiplier: int = 1
+
 var jump_height: int = 192  #How high the peak of the jump is in pixels
 
 #double jump
@@ -69,7 +72,8 @@ func _ready():
 	position = Globals.player_default_position
 
 func _physics_process(delta):
-	print(velocity, "  ", running_velocity)
+	if Input.is_action_just_pressed("ui_right"):
+		set_state("die")
 
 	get_input()
 	
@@ -119,10 +123,13 @@ func set_state(new_state : String):
 
 #Functions used across multiple states
 func move_horizontally(subtrahend):
-	current_speed = move_toward(current_speed, max_speed - subtrahend, acceleration) #accelerate current speed
-	
-	running_velocity = current_speed * direction_moving #apply curent speed to velocity and multiply by direction
-	running_velocity = clamp(running_velocity, -max_speed, max_speed)
+	if can_move_horizontally:
+		current_speed = move_toward(current_speed, max_speed - subtrahend, acceleration) #accelerate current speed
+
+		running_velocity = current_speed * direction_moving #apply curent speed to velocity and multiply by direction
+		running_velocity = clamp(running_velocity, -max_speed, max_speed)
+	else:
+		running_velocity = 0
 
 func squash_stretch(squash, stretch):
 	#set Sprite scale to squash and stretch
@@ -131,7 +138,7 @@ func squash_stretch(squash, stretch):
 
 func jump(jump_height):
 	velocity.y = 0 #reset velocity
-	velocity.y = -sqrt(2 * gravity * jump_height) #apply velocity
+	velocity.y = -sqrt(2 * gravity * (jump_height * jump_multiplier)) #apply velocity
 	
 	squash_stretch(jumping_squash, jumping_stretch) #set squaash and stretch
 
@@ -148,6 +155,10 @@ func idle_logic(delta):
 	if Input.is_action_just_pressed("shoot"):
 		#enter the grapple state if you press the button
 		set_state("grapple")
+	
+	if Input.is_action_just_pressed("down"):
+		#stop masking for the oneway tiles if you lick down
+		set_collision_mask_bit(2, false)
 		
 	
 	if direction_moving != 0:
@@ -177,6 +188,10 @@ func run_logic(delta):
 		#if your not on a floor, start falling and set jumpbuffer start time
 		jump_buffer_start_time = OS.get_ticks_msec()
 		set_state("fall")
+	
+	if Input.is_action_just_pressed("down"):
+		#stop masking for the oneway tiles if you lick down
+		set_collision_mask_bit(2, false)
 		
 	
 	if direction_moving == 0:
@@ -227,6 +242,7 @@ func fall_logic(delta):
 
 func fall_exit_logic():
 	jump_buffer_start_time = 0 #reset jump buffer start time
+	set_collision_mask_bit(2, true) #reset mask
 
 
 
@@ -288,6 +304,8 @@ func double_jump_exit_logic():
 
 
 func grapple_enter_logic() -> void:
+	grapple_velocity = Vector2.ZERO
+	
 	if Globals.has_grappling_hook == false:
 		#dont grapple if dont have the hook
 		if previous_state != "jump" && previous_state != "double_jump":
@@ -295,6 +313,7 @@ func grapple_enter_logic() -> void:
 		else:
 			set_state("fall")
 	else:
+		running_velocity = true
 		shoot_dump = $GrappleHook.shoot()
 		target = shoot_dump[0]
 
@@ -317,12 +336,13 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 1.2
 		
 		if sign(grapple_velocity.x) == direction_facing:
-			pass
+			grapple_velocity.x *= 1.2
 		else:
 			grapple_velocity.x *= 0.75
 		velocity += grapple_velocity
-
+#
 func grapple_exit_logic() -> void:
+	grapple_velocity = Vector2.ZERO
 	$GrappleHook.release() 
 
 

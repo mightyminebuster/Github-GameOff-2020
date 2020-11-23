@@ -58,14 +58,20 @@ shoot={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="GrapplableGround"
-2d_physics/layer_3="PlayerPhysics"
-2d_physics/layer_4="PlayerHitbox"
-2d_physics/layer_5="Hurtbox"
+2d_physics/layer_3="OneWayGround"
+2d_physics/layer_4="PlayerPhysics"
+2d_physics/layer_5="PlayerHitbox"
+2d_physics/layer_6="Hurtbox"
 
 [rendering]
 

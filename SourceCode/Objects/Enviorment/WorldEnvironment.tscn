@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+ambient_light_energy = 0.0
+dof_blur_far_amount = 1.0
+dof_blur_near_amount = 0.01
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/3 = false
+glow_levels/4 = true
+glow_levels/5 = false
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 0.953356
+glow_strength = 1.407
+glow_bicubic_upscale = true
+adjustment_enabled = true
+
+[sub_resource type="Animation" id=2]
+resource_name = "loop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:environment:glow_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.4, 1.43 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:environment:glow_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.8 ]
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "loop"
+playback_speed = 2.0
+anims/loop = SubResource( 2 )

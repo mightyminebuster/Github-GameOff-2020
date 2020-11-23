@@ -11,7 +11,7 @@ var tip: Vector2 = Vector2.ZERO
 var tip_target: Vector2 = Vector2.ZERO
 
 var speed: float = 0.07
-var pull: int = 30
+var pull: int = 60
 var is_shooting: bool = false
 
 

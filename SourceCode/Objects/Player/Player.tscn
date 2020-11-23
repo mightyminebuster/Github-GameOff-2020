@@ -17,8 +17,8 @@ polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
 
 [node name="Player" type="KinematicBody2D"]
 material = SubResource( 1 )
-collision_layer = 2147483652
-collision_mask = 3
+collision_layer = 2147483656
+collision_mask = 7
 script = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -29,8 +29,8 @@ modulate = Color( 0.403922, 0.607843, 0.607843, 1 )
 texture = ExtResource( 2 )
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
-collision_layer = 2147483656
-collision_mask = 16
+collision_layer = 2147483664
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 shape = SubResource( 2 )
