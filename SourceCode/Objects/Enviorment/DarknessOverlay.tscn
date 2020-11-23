@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="DarknessOverlay" type="ColorRect"]
+margin_right = 12958.0
+margin_bottom = 1080.0
+color = Color( 0.0117647, 0.0117647, 0.137255, 0.486275 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
