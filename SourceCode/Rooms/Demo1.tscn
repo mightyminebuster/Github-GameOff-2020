@@ -47,4 +47,4 @@ position = Vector2( 1440, 656 )
 new_scene = ExtResource( 6 )
 
 [node name="LowGravityActivator" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1408, 528 )
+position = Vector2( 1392, 528 )
