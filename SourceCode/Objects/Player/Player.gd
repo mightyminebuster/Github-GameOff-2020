@@ -23,7 +23,7 @@ var direction_moving: int = 0 #will be 1, -1, 0 depending on if you are holding 
 var direction_facing: int = 1 #last direction pressed that is not 0
 
 #Movement Vars
-var terminal_velocity: float = 1750
+var terminal_velocity: float = 1000
 var velocity: Vector2 = Vector2.ZERO #linear velocity applied to move and slide
 
 var current_speed: int = 0 #how much you add to x velocity when moving horizontally
@@ -38,6 +38,7 @@ var running_velocity: float = 0
 
 #fall
 var gravity: int = 1700 #how much is added to y velocity constantly
+var gravity_velocity: int = 0
 
 var jump_buffer_start_time: int  = 0 #ticks when you ran of the platform
 var elapsed_jump_buffer: int = 0 #how many seconds passed in the jump nuffer
@@ -81,14 +82,14 @@ func _physics_process(delta):
 	
 	call(current_state + "_logic", delta) #call the current states main method
 	
-	if abs(velocity.x) > max_speed:
+	
+	if abs(velocity.x) > max_speed && current_state in move_horizontally_states:
 		velocity.x = max_speed * sign(velocity.x)
-	velocity = velocity.clamped(terminal_velocity)
 	var f = velocity
 	f.x += running_velocity
-
+	
+	velocity = velocity.clamped(terminal_velocity)
 	velocity = move_and_slide(f, Vector2.UP) #aply velocity to movement
-	f = Vector2.ZERO
 	recover_sprite_scale()
 	
 	player_sprite.flip_h = direction_facing - 1 #flip sprite depending on which direction you last moved in
@@ -102,6 +103,7 @@ func get_input():
 func apply_gravity(delta):
 	#apply gravity in every state except dash
 	velocity.y += gravity * delta
+	
 
 func recover_sprite_scale():
 	#make sprite scale approach 0
@@ -333,12 +335,14 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 0.55
 		else:
 			# Pulling up is stronger
-			grapple_velocity.y *= 1.2
+			grapple_velocity.y *= 1.5
 		
 		if sign(grapple_velocity.x) == direction_facing:
 			grapple_velocity.x *= 1.2
 		else:
 			grapple_velocity.x *= 0.75
+		
+		grapple_velocity = grapple_velocity.clamped(75)
 		velocity += grapple_velocity
 #
 func grapple_exit_logic() -> void:
