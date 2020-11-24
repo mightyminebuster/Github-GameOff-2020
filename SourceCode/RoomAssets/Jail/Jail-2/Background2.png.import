@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WallOverlay.png-512a7ced6f634ff63eb251eecae0b4bf.stex"
+path="res://.import/Background2.png-5dca675bbaf0954e5e562491a3f35a1d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RoomAssets/Jail/Jail-1/WallOverlay.png"
-dest_files=[ "res://.import/WallOverlay.png-512a7ced6f634ff63eb251eecae0b4bf.stex" ]
+source_file="res://RoomAssets/Jail/Jail-2/Background2.png"
+dest_files=[ "res://.import/Background2.png-5dca675bbaf0954e5e562491a3f35a1d.stex" ]
 
 [params]
 
