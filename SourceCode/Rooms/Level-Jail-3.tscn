@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,21 +6,35 @@
 [ext_resource path="res://Objects/Pickups/CheckPoint/CheckPoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Tilesets/GroundTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Enviorment/WorldEnvironment.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tilesets/DieTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Enviorment/DarknessOverlay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://RoomAssets/Jail/Jail-3/Background2.png" type="Texture" id=10]
+[ext_resource path="res://RoomAssets/Jail/Jail-3/Background1.png" type="Texture" id=11]
 
 [node name="Level-Jail-3" type="Node2D"]
 
+[node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
+
 [node name="Background" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
-margin_left = -30.0
-margin_top = 7.0
-margin_right = 12972.0
-margin_bottom = 1091.0
-color = Color( 0.27451, 0.219608, 0.0705882, 1 )
+[node name="Backgeound2" type="TextureRect" parent="Background"]
+margin_right = 12480.0
+margin_bottom = 1080.0
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background1" type="TextureRect" parent="Background"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DarknessOverlay" parent="Background" instance=ExtResource( 9 )]
 
 [node name="GroundTiles" parent="." instance=ExtResource( 5 )]
 position = Vector2( 45, 3 )
@@ -101,7 +115,6 @@ current = true
 limit_left = 0
 limit_top = 0
 limit_bottom = 1080
-target_path = NodePath("../../Level-Jail/Player")
 
 [node name="CheckPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4119.8, 323.454 )

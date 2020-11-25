@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CirclePlaceholder.png-0b2e4bb54b15133ef326f348df822085.stex"
+path="res://.import/GrapplePickup.png-cac7b0b0100e75dde43977c354552aec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Objects/Obstacles/PendulumSaw/CirclePlaceholder.png"
-dest_files=[ "res://.import/CirclePlaceholder.png-0b2e4bb54b15133ef326f348df822085.stex" ]
+source_file="res://Objects/Pickups/GrapplePickup/GrapplePickup.png"
+dest_files=[ "res://.import/GrapplePickup.png-cac7b0b0100e75dde43977c354552aec.stex" ]
 
 [params]
 

@@ -11,5 +11,6 @@ func _process(_delta : float) -> void:
 	
 	$AnimationPlayer.playback_speed = speed
 	
+	
 	$Line2D.points[1] = Vector2(0, offset)
 	$Area2D.position = Vector2(0, offset) 

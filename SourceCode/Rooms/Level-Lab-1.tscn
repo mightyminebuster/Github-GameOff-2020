@@ -47,38 +47,37 @@ limit_bottom = 1080
 
 [node name="PendulumSaw" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1469.97, 876.038 )
-rotation = -0.720535
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = -0.0826098
+rotation = 1.40208
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 8289.81, 108.765 )
-rotation = -0.0826098
+rotation = 1.40208
 offset = 407
 speed = 0.6
 
 [node name="PendulumSaw6" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5136.11, 524.544 )
-rotation = -0.9331
+rotation = -1.69871
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = -1.5708
+rotation = 1.21529
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2354.56, 146.839 )
-rotation = -0.0826098
+rotation = 1.40208
 offset = 558
 speed = 0.6
 
