@@ -12,8 +12,8 @@ glow_levels/4 = true
 glow_levels/5 = false
 glow_levels/6 = true
 glow_levels/7 = true
-glow_intensity = 0.953356
-glow_strength = 1.407
+glow_intensity = 0.938764
+glow_strength = 1.40919
 glow_bicubic_upscale = true
 adjustment_enabled = true
 
@@ -52,3 +52,5 @@ environment = SubResource( 1 )
 autoplay = "loop"
 playback_speed = 2.0
 anims/loop = SubResource( 2 )
+
+[node name="Node" type="Node" parent="."]

@@ -10,8 +10,8 @@ var t: float = 0 #t in the interpolation function
 var tip: Vector2 = Vector2.ZERO
 var tip_target: Vector2 = Vector2.ZERO
 
-var speed: float = 0.07
-var pull: int = 60
+var speed: float = 0.08
+var pull: int = 55
 var is_shooting: bool = false
 
 

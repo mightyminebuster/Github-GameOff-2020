@@ -58,5 +58,6 @@ shader_param/color = Vector3( 0.35, 0.48, 0.95 )
 shader_param/OCTAVES = 4
 
 [node name="FogEffect" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.415686 )
 material = SubResource( 2 )
 texture = ExtResource( 1 )

@@ -27,17 +27,17 @@ var terminal_velocity: float = 1000
 var velocity: Vector2 = Vector2.ZERO #linear velocity applied to move and slide
 
 var current_speed: int = 0 #how much you add to x velocity when moving horizontally
-var max_speed: int = 250 #maximum current speed can reach when moving horizontally
+var max_speed: int = 225 #maximum current speed can reach when moving horizontally
 var acceleration: int = 60 #by how much does current speed approach max speed when moving
 var decceleration: int = 200 #by how much does velocity approach when you stop moving horizontally
-var air_friction: int = 100 #how much you subtract velocity when you start moving horizontally in the air
+var air_friction: int = 80 #how much you subtract velocity when you start moving horizontally in the air
 
 var can_move_horizontally: bool = true
 var move_horizontally_states: Array = ["run", "jump", "fall", "double_jump"]
 var running_velocity: float = 0
 
 #fall
-var gravity: int = 1700 #how much is added to y velocity constantly
+var gravity: int = 1700  #how much is added to y velocity constantly
 var gravity_velocity: int = 0
 
 var jump_buffer_start_time: int  = 0 #ticks when you ran of the platform
@@ -75,6 +75,7 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
+	print(collision_layer)
 
 	get_input()
 	
@@ -178,13 +179,17 @@ func run_enter_logic():
 	current_speed = 0 #reset current speed (we do this here to keep momentum on run jumps)
 
 func run_logic(delta):
+	move_horizontally(0)
+	
 	if Input.is_action_just_pressed("jump"):
 		#jump if you press the jump button
 		set_state("jump")
 		
 	if Input.is_action_just_pressed("shoot"):
 		#enter the grapple state if you press the button
+		running_velocity = 0
 		set_state("grapple")
+	
 
 	if !is_on_floor():
 		#if your not on a floor, start falling and set jumpbuffer start time
@@ -199,9 +204,6 @@ func run_logic(delta):
 	if direction_moving == 0:
 		#if your not pressing a move button go idle
 		set_state("idle")
-	else:
-		#if pressing move button start moving
-		move_horizontally(0)
 	
 func run_exit_logic():
 	running_velocity = 0
@@ -315,6 +317,7 @@ func grapple_enter_logic() -> void:
 		else:
 			set_state("fall")
 	else:
+		camera.shake(3, 2)
 		running_velocity = true
 		shoot_dump = $GrappleHook.shoot()
 		target = shoot_dump[0]
