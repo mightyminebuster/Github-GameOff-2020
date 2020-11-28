@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -11,10 +11,9 @@
 [ext_resource path="res://Objects/Enviorment/DarknessOverlay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://RoomAssets/Jail/Jail-3/Background2.png" type="Texture" id=10]
 [ext_resource path="res://RoomAssets/Jail/Jail-3/Background1.png" type="Texture" id=11]
+[ext_resource path="res://Objects/Enviorment/FogEffect.tscn" type="PackedScene" id=12]
 
 [node name="Level-Jail-3" type="Node2D"]
-
-[node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -47,6 +46,9 @@ tile_data = PoolIntArray( 37, 0, 0, 38, 0, 0, 39, 0, 0, 40, 0, 0, 41, 0, 0, 42, 
 tile_data = PoolIntArray( 524493, 0, 0, 524494, 0, 0, 524495, 0, 0, 655546, 0, 0, 655547, 0, 0, 655548, 0, 0, 655549, 0, 0, 655550, 0, 0, 655551, 0, 0, 655552, 0, 0, 655553, 0, 0, 720951, 0, 0, 720952, 0, 0, 720953, 0, 0, 720954, 0, 0, 720955, 0, 0, 720956, 0, 0, 720957, 0, 0, 1114309, 0, 0, 1114310, 0, 0, 1114311, 0, 0, 1114312, 0, 0, 1114313, 0, 0, 1114314, 0, 0, 1114315, 0, 0, 1179801, 0, 0, 1179802, 0, 0, 1179803, 0, 0, 1179804, 0, 0, 1179805, 0, 0, 1179806, 0, 0, 1179807, 0, 0, 1179808, 0, 0, 1179809, 0, 0, 1179810, 0, 0, 1441811, 0, 0, 1441812, 0, 0, 1441813, 0, 0, 1441814, 0, 0, 1441815, 0, 0, 1441816, 0, 0, 1441817, 0, 0, 1441819, 0, 0, 1441820, 0, 0, 1441821, 0, 0, 1441822, 0, 0, 1441823, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441947, 0, 0, 1507483, 0, 0, 1573019, 0, 0, 1573050, 0, 0, 1573051, 0, 0, 1573052, 0, 0, 1573053, 0, 0, 1573054, 0, 0, 1573055, 0, 0, 1573056, 0, 0, 1573057, 0, 0, 1638555, 0, 0, 1704091, 0, 0, 1769632, 0, 0, 1835168, 0, 0, 1900704, 0, 0, 1966240, 0, 0, 2163048, 0, 0, 2163049, 0, 0, 2163050, 0, 0, 2163051, 0, 0, 2163052, 0, 0, 2163053, 0, 0, 2163054, 0, 0, 2163055, 0, 0, 2163056, 0, 0, 2163057, 0, 0, 2163058, 0, 0, 2163059, 0, 0, 2163060, 0, 0, 2163061, 0, 0, 2163062, 0, 0, 2163063, 0, 0, 2163064, 0, 0, 2163065, 0, 0, 2163066, 0, 0, 2163067, 0, 0, 2163068, 0, 0, 2163069, 0, 0, 2163070, 0, 0, 2163071, 0, 0, 2163072, 0, 0, 2163073, 0, 0, 2163074, 0, 0, 2163075, 0, 0, 2163076, 0, 0, 2163077, 0, 0, 2163078, 0, 0, 2163079, 0, 0, 2163080, 0, 0, 2163081, 0, 0, 2163082, 0, 0, 2163083, 0, 0, 2163084, 0, 0, 2163085, 0, 0, 2163086, 0, 0, 2163087, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="CheckPoint" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4119.8, 323.454 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -116,5 +118,8 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 1080
 
-[node name="CheckPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 4119.8, 323.454 )
+[node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
+
+[node name="FogEffect" parent="." instance=ExtResource( 12 )]
+position = Vector2( 6475.75, 666.391 )
+scale = Vector2( 203.367, 21.8247 )

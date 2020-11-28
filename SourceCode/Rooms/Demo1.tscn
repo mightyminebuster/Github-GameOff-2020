@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Rooms/Level-Jail-1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Objects/Tilesets/OneWayTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Pickups/CheesePickup/CheesePickup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=10]
 
 [node name="Demo1" type="Node2D"]
 
@@ -44,3 +46,8 @@ limit_bottom = 1080
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1440, 656 )
 new_scene = ExtResource( 6 )
+
+[node name="CheesePickup" parent="." instance=ExtResource( 9 )]
+position = Vector2( 384, 544 )
+
+[node name="GUI" parent="." instance=ExtResource( 10 )]

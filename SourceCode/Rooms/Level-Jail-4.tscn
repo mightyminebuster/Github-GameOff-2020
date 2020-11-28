@@ -33,10 +33,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FogEffect" parent="Background" instance=ExtResource( 12 )]
-position = Vector2( 6520.25, 563.75 )
-scale = Vector2( 203.492, 17.3828 )
-
 [node name="DarknessOverlay" parent="Background" instance=ExtResource( 9 )]
 
 [node name="GroundTiles" parent="." instance=ExtResource( 5 )]
@@ -148,3 +144,7 @@ limit_bottom = 1080
 
 [node name="CheckPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4733.5, 937.608 )
+
+[node name="FogEffect" parent="." instance=ExtResource( 12 )]
+position = Vector2( 6520.25, 556 )
+scale = Vector2( 203.492, 17.625 )
