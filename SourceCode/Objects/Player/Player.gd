@@ -10,13 +10,13 @@ onready var camera: Camera2D = get_parent().find_node("Camera2D")
 onready var player_sprite: Sprite = $PlayerSprite #path to the player's sprite
 
 #Squash & Stretch
-var recovery_speed: float = 0.03 #how fast you recover from squashes, and stretches
+var recovery_speed: float = 1 #how fast you recover from squashes, and stretches
 
-var landing_squash: float = 1.5 #x scale of PlayerSprite when you land
-var landing_stretch: float = 0.5 #y scale of PlayerSprite when you land
+var landing_squash: float = 0.7 #x scale of PlayerSprite when you land
+var landing_stretch: float = 0.2 #y scale of PlayerSprite when you land
 
-var jumping_squash: float = 0.5 #x scale of PlayerSprite when you jump
-var jumping_stretch: float = 1.5 #y scale of PlayerSprite when you jump
+var jumping_squash: float = 0.2 #x scale of PlayerSprite when you jump
+var jumping_stretch: float = 0.7 #y scale of PlayerSprite when you jump
 
 #Input Vars
 var direction_moving: int = 0 #will be 1, -1, 0 depending on if you are holding right, left, or nothing
@@ -108,8 +108,8 @@ func apply_gravity(delta):
 
 func recover_sprite_scale():
 	#make sprite scale approach 0
-	player_sprite.scale.x = move_toward(player_sprite.scale.x, 1, recovery_speed)
-	player_sprite.scale.y = move_toward(player_sprite.scale.y, 1, recovery_speed)
+	player_sprite.scale.x = move_toward(player_sprite.scale.x, 0.5, recovery_speed)
+	player_sprite.scale.y = move_toward(player_sprite.scale.y, 0.5, recovery_speed)
 
 func set_state(new_state : String):
 	#update state values
@@ -148,7 +148,7 @@ func jump(jump_height):
 #State Functions
 
 func idle_enter_logic():
-	pass
+	$AnimationPlayer.play("idle")
 
 func idle_logic(delta):
 	if Input.is_action_just_pressed("jump"):
@@ -176,6 +176,8 @@ func idle_exit_logic():
 
 
 func run_enter_logic():
+	$AnimationPlayer.play("Run")
+	
 	current_speed = 0 #reset current speed (we do this here to keep momentum on run jumps)
 
 func run_logic(delta):
@@ -211,8 +213,8 @@ func run_exit_logic():
 
 
 func fall_enter_logic():
-	#Anim.play("Fall") #play the fall animation
-	pass
+	$AnimationPlayer.play("Fall") #play the fall animation
+	
 
 func fall_logic(delta):
 	move_horizontally(air_friction) #move horizontally
@@ -251,6 +253,7 @@ func fall_exit_logic():
 
 
 func jump_enter_logic():
+	$AnimationPlayer.play("jump")
 	jump(jump_height)
 
 func jump_logic(delta):
@@ -283,6 +286,8 @@ func jump_exit_logic():
 
 
 func double_jump_enter_logic():
+	$AnimationPlayer.play("jump")
+	
 	jump(double_jump_height)
 	has_double_jumped = true #make sure you can only double jump once
 
@@ -347,6 +352,8 @@ func grapple_logic(_delta : float) -> void:
 		
 		grapple_velocity = grapple_velocity.clamped(75)
 		velocity += grapple_velocity
+		
+		
 #
 func grapple_exit_logic() -> void:
 	grapple_velocity = Vector2.ZERO
@@ -355,11 +362,12 @@ func grapple_exit_logic() -> void:
 
 
 func die_enter_logic() -> void:
+	$AnimationPlayer.play("Die")
 	velocity = Vector2.ZERO #Stop all movement
 
 func die_logic(_delta : float) -> void:
-	if !has_animation_started:
-		has_animation_started = true
+	velocity = Vector2.ZERO #Stop all movement
+	if !$AnimationPlayer.is_playing():
 		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 4)
 
 func die_exit_logic() -> void:

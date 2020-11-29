@@ -6,6 +6,7 @@
 polygon = PoolVector2Array( 32, 32, -32, 32, -32, -32, 32, -32 )
 
 [node name="OneWayTiles" type="StaticBody2D"]
+modulate = Color( 0.0745098, 0.105882, 0.137255, 1 )
 collision_layer = 4
 
 [node name="PlaceholderTexture" type="Sprite" parent="."]

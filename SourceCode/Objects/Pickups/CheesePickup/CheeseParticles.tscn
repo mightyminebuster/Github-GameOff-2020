@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Objects/Pickups/CheesePickup/CheeseParticles.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[node name="CheeseParticles" type="CPUParticles2D"]
+material = SubResource( 1 )
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.06
+explosiveness = 1.0
+randomness = 1.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 43.01
+initial_velocity_random = 1.0
+angular_velocity = 209.03
+angular_velocity_random = 1.0
+linear_accel = 100.0
+linear_accel_random = 1.0
+angle = 808.0
+angle_random = 1.0
+scale_amount = 15.0
+scale_amount_random = 1.0
+color = Color( 0.686275, 0.713726, 0.364706, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.24
+script = ExtResource( 1 )

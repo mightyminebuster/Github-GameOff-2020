@@ -70,7 +70,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 1/z_index = 0
 
 [node name="GrapplableTiles" type="TileMap"]
-modulate = Color( 0.207843, 0.192157, 0.317647, 1 )
+modulate = Color( 1, 0.854902, 0.607843, 1 )
 tile_set = SubResource( 6 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 2

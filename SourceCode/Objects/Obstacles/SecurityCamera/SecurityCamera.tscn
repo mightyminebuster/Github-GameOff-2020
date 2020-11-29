@@ -35,27 +35,28 @@ __meta__ = {
 [node name="RightRaycst" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( 115, 240 )
-collision_mask = 23
+collision_mask = 15
 
 [node name="RightMidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
+position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( 57, 240 )
-collision_mask = 23
+collision_mask = 15
 
 [node name="MidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( 0, 250 )
-collision_mask = 23
+collision_mask = 15
 
 [node name="LeftMidRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( -57, 240 )
-collision_mask = 23
+collision_mask = 15
 
 [node name="LeftRaycast" type="RayCast2D" parent="RotationFix/Raycasts"]
 enabled = true
 cast_to = Vector2( -115, 240 )
-collision_mask = 23
+collision_mask = 15
 
 [node name="Light2D" type="Light2D" parent="RotationFix"]
 texture = ExtResource( 2 )

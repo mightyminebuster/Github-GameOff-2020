@@ -44,7 +44,7 @@ limit_bottom = 1080
 [node name="GrapplePickup" parent="." instance=ExtResource( 4 )]
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1440, 656 )
+position = Vector2( 1488, 560 )
 new_scene = ExtResource( 6 )
 
 [node name="CheesePickup" parent="." instance=ExtResource( 9 )]
