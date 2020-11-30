@@ -75,7 +75,6 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
 		set_state("die")
-	print(collision_layer)
 
 	get_input()
 	

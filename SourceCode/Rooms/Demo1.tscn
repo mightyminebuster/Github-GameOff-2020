@@ -13,6 +13,8 @@
 
 [node name="Demo1" type="Node2D"]
 
+[node name="GUI" parent="." instance=ExtResource( 10 )]
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
@@ -49,5 +51,3 @@ new_scene = ExtResource( 6 )
 
 [node name="CheesePickup" parent="." instance=ExtResource( 9 )]
 position = Vector2( 384, 544 )
-
-[node name="GUI" parent="." instance=ExtResource( 10 )]

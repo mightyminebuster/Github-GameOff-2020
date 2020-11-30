@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Objects/Enviorment/DarknessOverlay.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/Enviorment/FogEffect.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/Tilesets/CheeseFIller.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=15]
 
 [node name="Level-Jail-1" type="Node2D"]
 
@@ -136,3 +137,5 @@ speed = 0.21
 [node name="FogEffect" parent="." instance=ExtResource( 13 )]
 position = Vector2( 6504, 608 )
 scale = Vector2( 204.134, 20.0779 )
+
+[node name="GUI" parent="." instance=ExtResource( 15 )]

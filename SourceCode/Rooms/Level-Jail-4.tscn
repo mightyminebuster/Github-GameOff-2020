@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://RoomAssets/Jail/Jail-3/Background2.png" type="Texture" id=10]
 [ext_resource path="res://RoomAssets/Jail/Jail-3/Background1.png" type="Texture" id=11]
 [ext_resource path="res://Objects/Enviorment/FogEffect.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=13]
 
 [node name="Level-Jail" type="Node2D"]
 
@@ -148,3 +149,5 @@ position = Vector2( 4733.5, 937.608 )
 [node name="FogEffect" parent="." instance=ExtResource( 12 )]
 position = Vector2( 6520.25, 556 )
 scale = Vector2( 203.492, 17.625 )
+
+[node name="GUI" parent="." instance=ExtResource( 13 )]

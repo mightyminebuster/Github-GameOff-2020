@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PlaceholderTexture.png" type="Texture" id=1]
+[ext_resource path="res://Objects/Enviorment/FogRed.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/color = Vector3( 1, 1, 1 )
+shader_param/OCTAVES = 7
+
+[node name="FogEffect" type="Sprite"]
+modulate = Color( 1, 0.466667, 0.462745, 0.0666667 )
+material = SubResource( 1 )
+texture = ExtResource( 1 )
