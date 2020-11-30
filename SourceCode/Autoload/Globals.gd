@@ -6,4 +6,7 @@ var has_grappling_hook: bool = false
 var player_default_gravity: int = 1700
 
 var coin_count = 0
+var timer = 0
 
+func _process(delta):
+	timer = OS.get_ticks_msec()

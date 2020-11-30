@@ -5,7 +5,7 @@
 [ext_resource path="res://Objects/GUI/GUI.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 80
+size = 100
 font_data = ExtResource( 2 )
 
 [node name="GUI" type="CanvasLayer"]
@@ -28,6 +28,17 @@ margin_right = 560.0
 margin_bottom = 224.0
 custom_fonts/normal_font = SubResource( 1 )
 text = "x 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 784.0
+margin_top = 96.0
+margin_right = 1280.0
+margin_bottom = 384.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "00:00:00:00"
 __meta__ = {
 "_edit_use_anchors_": false
 }
