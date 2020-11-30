@@ -1,10 +1,7 @@
 extends Area2D
 
 export(PackedScene) var new_scene
-onready var player = get_parent().find_node("Player")
 
 
-func _on_SceneSwitcher_body_entered(body):
-	Globals.player_default_position = Vector2(64, 1080 - 540)
+func _on_SceneSwitchActivator_body_entered(body):
 	SceneSwitcher.change_scene(new_scene)
-	

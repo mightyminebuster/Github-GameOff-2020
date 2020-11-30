@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://RoomAssets/Jail/Jail-3/Background1.png" type="Texture" id=11]
 [ext_resource path="res://Objects/Enviorment/FogEffect.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Rooms/Level-Jail-4.tscn" type="PackedScene" id=15]
 
 [node name="Level-Jail-3" type="Node2D"]
 
@@ -48,8 +50,18 @@ tile_data = PoolIntArray( 524493, 0, 0, 524494, 0, 0, 524495, 0, 0, 655546, 0, 0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 1080
+
 [node name="CheckPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 4119.8, 323.454 )
+
+[node name="SceneSwitchActivator" parent="." instance=ExtResource( 14 )]
+position = Vector2( 12890.9, 372.008 )
+new_scene = ExtResource( 15 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -112,12 +124,6 @@ position = Vector2( 8662.46, 426.6 )
 rotation = 0.663225
 scale = Vector2( 1.471, 2.392 )
 speed = 0.21
-
-[node name="Camera2D" parent="." instance=ExtResource( 3 )]
-current = true
-limit_left = 0
-limit_top = 0
-limit_bottom = 1080
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 7 )]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Objects/Enviorment/FogEffect.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/Tilesets/CheeseFIller.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=16]
 
 [node name="Level-Jail-2" type="Node2D"]
 
@@ -55,6 +56,18 @@ position = Vector2( 1472, 632 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 1080
+
+[node name="CheckPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 5335.49, 1027.81 )
+
+[node name="SceneSwitchActivator" parent="." instance=ExtResource( 16 )]
+position = Vector2( 12376, 440 )
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="SecurityCamera3" parent="Obstacles" instance=ExtResource( 6 )]
@@ -80,8 +93,6 @@ position = Vector2( 2246.86, 432.243 )
 rotation = 0.518363
 scale = Vector2( 1.471, 1.85 )
 speed = 0.142
-
-[node name="Node" type="Node" parent="Obstacles/SecurityCamera4"]
 
 [node name="SecurityCamera5" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 3635.92, 22.008 )
@@ -124,15 +135,6 @@ position = Vector2( 8685.08, 623.176 )
 rotation = 3.32834
 scale = Vector2( 1.471, 2.392 )
 speed = 0.11
-
-[node name="Camera2D" parent="." instance=ExtResource( 3 )]
-current = true
-limit_left = 0
-limit_top = 0
-limit_bottom = 1080
-
-[node name="CheckPoint" parent="." instance=ExtResource( 7 )]
-position = Vector2( 5335.49, 1027.81 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 11 )]
 
