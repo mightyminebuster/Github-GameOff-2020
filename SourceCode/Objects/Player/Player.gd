@@ -162,6 +162,7 @@ func idle_logic(delta):
 	if Input.is_action_just_pressed("down"):
 		#stop masking for the oneway tiles if you lick down
 		set_collision_mask_bit(2, false)
+		set_state("fall")
 		
 	
 	if direction_moving != 0:
@@ -201,7 +202,7 @@ func run_logic(delta):
 	if Input.is_action_just_pressed("down"):
 		#stop masking for the oneway tiles if you lick down
 		set_collision_mask_bit(2, false)
-		
+		set_state("fall")
 	
 	if direction_moving == 0:
 		#if your not pressing a move button go idle
@@ -211,14 +212,18 @@ func run_exit_logic():
 	running_velocity = 0
 
 
-
 func fall_enter_logic():
 	$AnimationPlayer.play("Fall") #play the fall animation
 	
 
 func fall_logic(delta):
+	
 	move_horizontally(air_friction) #move horizontally
 	elapsed_jump_buffer = OS.get_ticks_msec() - jump_buffer_start_time #set elapsed time for jump buffer
+	
+	if elapsed_jump_buffer > jump_buffer * 4:
+		set_collision_mask_bit(2, true)
+	
 	if previous_state != "grapple" && direction_moving == 0:
 		velocity.x = 0
 	
