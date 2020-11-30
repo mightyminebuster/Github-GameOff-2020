@@ -372,6 +372,8 @@ func die_enter_logic() -> void:
 
 func die_logic(_delta : float) -> void:
 	velocity = Vector2.ZERO #Stop all movement
+	running_velocity = 0
+	
 	if !$AnimationPlayer.is_playing():
 		SceneSwitcher.change_scene(load("res://Rooms/" + get_tree().current_scene.name + ".tscn"), 4)
 
