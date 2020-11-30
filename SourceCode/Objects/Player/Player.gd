@@ -107,8 +107,8 @@ func apply_gravity(delta):
 
 func recover_sprite_scale():
 	#make sprite scale approach 0
-	player_sprite.scale.x = move_toward(player_sprite.scale.x, 0.5, recovery_speed)
-	player_sprite.scale.y = move_toward(player_sprite.scale.y, 0.5, recovery_speed)
+	player_sprite.scale.x = move_toward(player_sprite.scale.x, 0.4, recovery_speed)
+	player_sprite.scale.y = move_toward(player_sprite.scale.y, 0.4, recovery_speed)
 
 func set_state(new_state : String):
 	#update state values
@@ -350,7 +350,8 @@ func grapple_logic(_delta : float) -> void:
 			grapple_velocity.y *= 1.5
 		
 		if sign(grapple_velocity.x) == direction_facing:
-			grapple_velocity.x *= 1.2
+			pass
+			#grapple_velocity.x *= 1.2
 		else:
 			grapple_velocity.x *= 0.75
 		

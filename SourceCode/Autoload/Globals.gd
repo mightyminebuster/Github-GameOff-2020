@@ -19,14 +19,14 @@ func _process(delta):
 	string_timer = String(raw_timer) #convert to string
 	string_timer = string_timer.substr(0, string_timer.length() - 3) #cut out miliseconds
 	
-	var filler: int = 6
-	var filler_string: String = ""
-	filler -= string_timer.length() 
+#	var filler: int = 6
+#	var filler_string: String = ""
+#	filler -= string_timer.length() 
 	
-	for x in filler:
-		filler_string += "0"
-	string_timer = filler_string + string_timer #add filler 0s
+#	for x in filler:
+#		filler_string += "0"
+#	string_timer = filler_string + string_timer #add filler 0s
 	
 	
-	string_timer = string_timer.insert(string_timer.length() - 2, ":") #insert colons
-	string_timer = string_timer.insert(string_timer.length() - 5, ":")
+	#string_timer = string_timer.insert(string_timer.length() - 2, ":") #insert colons
+	#string_timer = string_timer.insert(string_timer.length() - 5, ":")

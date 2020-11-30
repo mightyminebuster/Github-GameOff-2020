@@ -10,7 +10,7 @@
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33.6432, 52.7676 )
+extents = Vector2( 16, 40 )
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 32.0
@@ -110,14 +110,13 @@ script = ExtResource( 3 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 0, -8 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
 vframes = 11
 hframes = 4
 frame = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 6.35677, -3.23241 )
 shape = SubResource( 2 )
 
 [node name="PlayerHitbox" type="Area2D" parent="."]

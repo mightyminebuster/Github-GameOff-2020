@@ -18,8 +18,10 @@
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-margin_right = 13002.0
-margin_bottom = 1084.0
+margin_left = -15.4596
+margin_top = 4.75681
+margin_right = 12986.5
+margin_bottom = 1088.76
 color = Color( 0.709804, 0.47451, 0.403922, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
