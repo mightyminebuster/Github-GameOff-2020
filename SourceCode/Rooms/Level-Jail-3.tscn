@@ -127,7 +127,7 @@ scale = Vector2( 1.471, 2.392 )
 speed = 0.21
 
 [node name="CheesePickup" parent="Obstacles/SecurityCamera10" instance=ExtResource( 16 )]
-position = Vector2( -3696.45, 1942.85 )
+position = Vector2( -3706.7, 1929.02 )
 
 [node name="CheesePickup2" parent="Obstacles/SecurityCamera10" instance=ExtResource( 16 )]
 position = Vector2( -3978.54, 1812.04 )

@@ -52,7 +52,9 @@ tile_data = PoolIntArray( 65711, 0, 0, 65712, 0, 0, 65713, 0, 0, 65714, 0, 0, 65
 current = true
 limit_left = 0
 limit_top = 0
+limit_right = 13000
 limit_bottom = 1080
+editor_draw_limits = true
 
 [node name="CheckPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 4733.5, 937.608 )

@@ -60,18 +60,20 @@ position = Vector2( 1472, 632 )
 current = true
 limit_left = 0
 limit_top = 0
+limit_right = 12400
 limit_bottom = 1080
+editor_draw_limits = true
 
 [node name="CheckPoint" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5335.49, 1027.81 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 16 )]
-position = Vector2( 12376, 440 )
+position = Vector2( 12296, 232 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="SecurityCamera3" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 1794.2, 14.6527 )
+position = Vector2( 1816, 16.0001 )
 rotation = 0.895354
 scale = Vector2( 1, 1.418 )
 speed = 0.257
@@ -83,19 +85,19 @@ scale = Vector2( 1.164, 2.297 )
 speed = 0.144
 
 [node name="SecurityCamera" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 2161.85, 3.66483 )
+position = Vector2( 2088, 16 )
 rotation = -1.00531
 scale = Vector2( 1.471, 1.376 )
 speed = 0.142
 
 [node name="SecurityCamera4" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 2246.86, 432.243 )
+position = Vector2( 2200, 432 )
 rotation = 0.518363
 scale = Vector2( 1.471, 1.85 )
 speed = 0.142
 
 [node name="SecurityCamera5" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 3635.92, 22.008 )
+position = Vector2( 3608, 16 )
 rotation = 1.39626
 scale = Vector2( 1.471, 1.932 )
 speed = 0.227
@@ -107,39 +109,33 @@ scale = Vector2( 1.374, 1.312 )
 speed = 0.137
 
 [node name="SecurityCamera7" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 5942.32, 800.389 )
+position = Vector2( 5912, 800 )
 rotation = -2.36318
 scale = Vector2( 1.471, 2.225 )
 speed = 0.132
 
 [node name="SecurityCamera8" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 5503.26, 77.834 )
+position = Vector2( 5448, 144 )
 rotation = 0.165806
 scale = Vector2( 1.471, 2.075 )
 speed = 0.186
 
 [node name="SecurityCamera10" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 9955.05, 201.74 )
-rotation = 1.93208
+position = Vector2( 9920, 488 )
+rotation = 1.03149
 scale = Vector2( 1.471, 2.392 )
 speed = 0.21
 
-[node name="SecurityCamera11" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 9959.29, 573.678 )
-rotation = 2.69304
-scale = Vector2( 1.471, 2.392 )
-speed = 0.11
-
 [node name="SecurityCamera12" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 8685.08, 623.176 )
-rotation = 3.32834
+position = Vector2( 7952, 544 )
+rotation = 3.96364
 scale = Vector2( 1.471, 2.392 )
 speed = 0.11
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 11 )]
 
 [node name="FogEffect" parent="." instance=ExtResource( 13 )]
-position = Vector2( 6172, 552 )
+position = Vector2( 6168, 552 )
 scale = Vector2( 192.875, 17.25 )
 
 [node name="GUI" parent="." instance=ExtResource( 15 )]
