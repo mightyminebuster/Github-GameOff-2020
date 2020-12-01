@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cutscenes_1_loopable.wav-bdd93841156dd5469c37a3a0ad2e33fb.sample"
+
+[deps]
+
+source_file="res://Rooms/CutScenes/BegningCutscene/cutscenes_1_loopable.wav"
+dest_files=[ "res://.import/cutscenes_1_loopable.wav-bdd93841156dd5469c37a3a0ad2e33fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Rooms/CutScenes/ResumeHint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Rooms/CutScenes/EndingCutscene/Slide1.jpg" type="Texture" id=2]
 [ext_resource path="res://Rooms/CutScenes/EndingCutscene/Slide2.jpg" type="Texture" id=3]
+[ext_resource path="res://RoomAssets/AudioStreamPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Rooms/CutScenes/EndingCutscene/cutscenes_3_loopable.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Main"
@@ -35,9 +37,9 @@ offset = Vector2( 960, 540 )
 
 [node name="Label" parent="." instance=ExtResource( 1 )]
 visible = true
-margin_left = 368.0
+margin_left = 664.0
 margin_top = 176.0
-margin_right = 1552.0
+margin_right = 1256.0
 margin_bottom = 336.0
 text = "Thank You For Playing
 "
@@ -45,3 +47,6 @@ scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Main = SubResource( 1 )
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 4 )]
+stream = ExtResource( 5 )

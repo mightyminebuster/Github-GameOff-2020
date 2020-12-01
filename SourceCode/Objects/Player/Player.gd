@@ -65,9 +65,11 @@ var has_animation_started: bool = false
 
 #Loop Functions
 func _on_PlayerHitbox_area_entered(area):
-	set_state("die")
+	if current_state != "die":
+		set_state("die")
 func _on_PlayerHitbox_body_entered(body):
-	set_state("die")
+	if current_state != "die":
+		set_state("die")
 
 func _ready():
 	position = Globals.player_default_position
@@ -378,6 +380,8 @@ func grapple_exit_logic() -> void:
 
 func die_enter_logic() -> void:
 	$AnimationPlayer.play("Die")
+	$SoundController.play("Death")
+	
 	velocity = Vector2.ZERO #Stop all movement
 	camera.shake(20,20)
 

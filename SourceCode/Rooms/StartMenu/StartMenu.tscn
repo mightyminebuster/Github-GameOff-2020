@@ -106,5 +106,6 @@ anims/Main = SubResource( 1 )
 
 [node name="IntroPlayer" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
+pitch_scale = 0.92
 
 [node name="ConfirmSFX" parent="." instance=ExtResource( 9 )]
