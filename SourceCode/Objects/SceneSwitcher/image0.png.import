@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StartButton.png-b06d386d586eb28293977fab2aa0df92.stex"
+path="res://.import/image0.png-d480e320dc33268e0963f95989c75225.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rooms/StartMenu/StartButton.png"
-dest_files=[ "res://.import/StartButton.png-b06d386d586eb28293977fab2aa0df92.stex" ]
+source_file="res://Objects/SceneSwitcher/image0.png"
+dest_files=[ "res://.import/image0.png-d480e320dc33268e0963f95989c75225.stex" ]
 
 [params]
 

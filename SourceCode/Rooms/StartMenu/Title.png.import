@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StartButtonHover.png-ecc0a1c2b6539af382534b2d331feaf0.stex"
+path="res://.import/Title.png-b3a447d947944d4160bbeb09d140adb9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rooms/StartMenu/StartButtonHover.png"
-dest_files=[ "res://.import/StartButtonHover.png-ecc0a1c2b6539af382534b2d331feaf0.stex" ]
+source_file="res://Rooms/StartMenu/Title.png"
+dest_files=[ "res://.import/Title.png-b3a447d947944d4160bbeb09d140adb9.stex" ]
 
 [params]
 

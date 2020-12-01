@@ -106,13 +106,13 @@ speed = 0.137
 
 [node name="SecurityCamera7" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 4901.26, 609.2 )
-rotation = 2.33351
+rotation = 1.78373
 scale = Vector2( 1.471, 2.225 )
 speed = 0.132
 
 [node name="SecurityCamera8" parent="Obstacles" instance=ExtResource( 6 )]
-position = Vector2( 5503.26, 77.834 )
-rotation = 0.165806
+position = Vector2( 5504, 80 )
+rotation = -0.0523599
 scale = Vector2( 1.471, 3.266 )
 speed = 0.186
 
