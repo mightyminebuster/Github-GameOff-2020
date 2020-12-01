@@ -6,7 +6,8 @@ func _physics_process(_delta : float) -> void:
 		for raycast in find_node("RotationFix").find_node("Raycasts").get_children():
 			if raycast.is_colliding():
 				if raycast.get_collider().collision_layer == 2147483656:
-					raycast.get_collider().set_state("die")
+					if raycast.get_collider().current_state != "die":
+						raycast.get_collider().set_state("die")
 
 
 func _process(delta):

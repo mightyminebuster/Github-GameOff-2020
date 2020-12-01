@@ -385,7 +385,7 @@ func die_enter_logic() -> void:
 	a = String(round(rand_range(1, 2)))
 	
 	
-	$SoundController.play("Death" + a)
+	$SoundController.play("Death" + a, -9, 0.9)
 	
 	velocity = Vector2.ZERO #Stop all movement
 	camera.shake(20,20)
