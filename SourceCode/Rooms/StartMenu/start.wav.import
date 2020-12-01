@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/start.wav-f1dea844d494cd1fdfb6cff227f10f06.sample"
+
+[deps]
+
+source_file="res://Rooms/StartMenu/start.wav"
+dest_files=[ "res://.import/start.wav-f1dea844d494cd1fdfb6cff227f10f06.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

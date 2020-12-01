@@ -8,4 +8,5 @@ func _ready():
 func _process(delta):
 	if $AnimationPlayer.current_animation == "EndLoop":
 		if Input.is_action_just_pressed("jump"):
+			$ConfirmSFX.play()
 			SceneSwitcher.change_scene(next_scene)

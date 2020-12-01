@@ -7,8 +7,9 @@ func _ready():
 	$AnimationPlayer.queue("EndLoop")
 
 func _process(delta : float) -> void:
-	if !$AudioStreamPlayer.playing:
-		$AudioStreamPlayer.playing = true
+	if !$MusicPlayer.playing:
+		$MusicPlayer.playing = true
 
 	if Input.is_action_just_pressed("jump"):
+		$ConfirmSFX.play()
 		SceneSwitcher.change_scene(next_scene)

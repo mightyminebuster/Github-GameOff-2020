@@ -50,4 +50,5 @@ stream = ExtResource( 5 )
 volume_db = -10.0
 pitch_scale = 1.5
 bus = "SoundEffects"
+script = null
 [connection signal="body_entered" from="." to="." method="_on_CheesePickup_body_entered"]

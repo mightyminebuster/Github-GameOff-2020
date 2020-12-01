@@ -154,7 +154,7 @@ speed = 0.21
 [node name="WorldEnvironment" parent="." instance=ExtResource( 11 )]
 
 [node name="FogEffect" parent="." instance=ExtResource( 13 )]
-position = Vector2( 6504, 608 )
+position = Vector2( 6512, 608 )
 scale = Vector2( 204.134, 20.0779 )
 
 [node name="GUI" parent="." instance=ExtResource( 15 )]

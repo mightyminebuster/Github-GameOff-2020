@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Rooms/CutScenes/IntermissionCutscene/Concept (2).png" type="Texture" id=1]
 [ext_resource path="res://Rooms/CutScenes/ResumeHint.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Rooms/CutScenes/IntermissionCutscene/IntermissionCutscene.gd" type="Script" id=3]
+[ext_resource path="res://ConfirmSFX.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "loop"
@@ -91,3 +92,5 @@ text = " Press Space to resume"
 autoplay = "loop"
 anims/loop = SubResource( 1 )
 script = SubResource( 2 )
+
+[node name="ConfirmSFX" parent="." instance=ExtResource( 4 )]
