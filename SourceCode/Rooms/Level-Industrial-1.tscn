@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://RoomAssets/Music/2-1.wav" type="AudioStream" id=16]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Objects/Pickups/CheesePickup/CheesePickup.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Rooms/Level-Industrial-2.tscn" type="PackedScene" id=19]
 
 [node name="Level-Industrial-1" type="Node2D"]
 
@@ -68,47 +69,48 @@ position = Vector2( 6086.43, 293.428 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 17 )]
 position = Vector2( 12888, 392 )
+new_scene = ExtResource( 19 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1456, 440 )
-rotation = 0.65906
+rotation = 0.916108
 rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = 0.964036
+rotation = 1.26376
 rotation_type = "HalfRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -4.02859
+rotation = 0.294382
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw6" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -4.02859
+rotation = 0.294382
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = 1.1183
+rotation = 1.43745
 rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw5" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1456, 712 )
-rotation = 0.65906
+rotation = 0.916108
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.8

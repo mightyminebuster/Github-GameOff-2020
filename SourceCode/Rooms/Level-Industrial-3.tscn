@@ -78,154 +78,154 @@ new_scene = ExtResource( 19 )
 
 [node name="PendulumSaw22" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 6160, 576 )
-rotation = 0.40232
-scale = Vector2( 1, 1 )
+rotation = -3.11365
 rotation_type = "FullRotation"
 offset = 500
 speed = 1.0
 
 [node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1678.17, 735.2 )
-rotation = 1.5708
+rotation = 0.936961
 rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
 [node name="PendulumSaw2" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 5237.75, 52.8 )
-rotation = -0.348043
+rotation = -2.54949
 rotation_type = "FullRotation"
 offset = 389
 speed = 0.6
 
 [node name="PendulumSaw3" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 3715.35, 355 )
-rotation = 0.0421545
+rotation = -1.44615
 rotation_type = "HalfRotation"
 offset = 501
 speed = 0.508
 
 [node name="PendulumSaw10" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 2998.35, 422 )
-rotation = -2.40901
+rotation = 0.187459
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.33
 
 [node name="PendulumSaw6" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 4886.35, 65.0001 )
-rotation = 1.17675
+rotation = 0.310021
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
 [node name="PendulumSaw4" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 7502.15, 340.8 )
-rotation = -1.11516
+rotation = -0.837767
 rotation_type = "FullRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw18" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 7503.15, 340.8 )
-rotation = -0.963276
+rotation = -0.593424
 rotation_type = "HalfRotation"
 offset = 552
 speed = 0.5
 
 [node name="PendulumSaw12" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 8789.15, 17.8 )
-rotation = -1.11516
+rotation = -0.837767
 rotation_type = "FullRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw20" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 10343.2, 90.8 )
-rotation = -0.963276
+rotation = -0.593424
 rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
 [node name="PendulumSaw13" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 12735.2, 1086.8 )
-rotation = 0.409606
+rotation = -4.26147
 rotation_type = "FullRotation"
 offset = 268
 speed = 0.7
 
 [node name="PendulumSaw14" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 10163.2, 21.7999 )
-rotation = -1.02534
+rotation = -4.49154
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.253
 
 [node name="PendulumSaw15" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 11196.1, 598.8 )
-rotation = -2.05738
+rotation = -0.254178
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.2
 
 [node name="PendulumSaw16" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 11397.1, 605.8 )
-rotation = -1.2997
+rotation = -1.96614
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.3
 
 [node name="PendulumSaw17" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 11303.2, 604.8 )
-rotation = -2.82445
+rotation = 1.45751
 rotation_type = "FullRotation"
 offset = 145
 speed = 1.1
 
 [node name="PendulumSaw11" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 5400.35, 940.8 )
-rotation = -3.5818
+rotation = -3.11365
 rotation_type = "FullRotation"
 offset = 99
 speed = 1.0
 
 [node name="PendulumSaw21" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 4884.15, 939.8 )
-rotation = -3.5818
+rotation = -3.11365
 rotation_type = "FullRotation"
 offset = 99
 speed = 1.0
 
 [node name="PendulumSaw19" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 7485.15, 1054.8 )
-rotation = -4.19522
+rotation = -3.00091
 rotation_type = "FullRotation"
 offset = 99
 speed = 0.92
 
 [node name="PendulumSaw5" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1672.94, 738 )
-rotation = 0.0595422
+rotation = -1.31307
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.6
 
 [node name="PendulumSaw9" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 2953.34, 312 )
-rotation = 0.0595422
+rotation = -1.31307
 rotation_type = "HalfRotation"
 offset = 196
 speed = 0.6
 
 [node name="PendulumSaw7" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 2216.34, 211 )
+rotation = 1.5708
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.4
 
 [node name="PendulumSaw8" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 616.34, 212 )
-rotation = 1.5708
+rotation = 0.204294
 rotation_type = "HalfRotation"
 offset = 192
 speed = 0.85
