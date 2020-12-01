@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Objects/Player/GrappleHook.gd" type="Script" id=1]
 [ext_resource path="res://PlaceholderTexture.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Objects/Player/Sfx/RopeImpact.wav" type="AudioStream" id=11]
 [ext_resource path="res://Objects/Player/Sfx/GrapplePull.wav" type="AudioStream" id=12]
 [ext_resource path="res://Objects/Player/Sfx/Death1.wav" type="AudioStream" id=13]
+[ext_resource path="res://Objects/Player/Sfx/Death2.wav" type="AudioStream" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -185,8 +186,13 @@ stream = ExtResource( 10 )
 [node name="RopeIn" type="AudioStreamPlayer" parent="SoundController"]
 stream = ExtResource( 8 )
 
-[node name="Death" type="AudioStreamPlayer" parent="SoundController"]
+[node name="Death1" type="AudioStreamPlayer" parent="SoundController"]
 stream = ExtResource( 13 )
+pitch_scale = 0.9
+bus = "SoundEffects"
+
+[node name="Death2" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 14 )
 pitch_scale = 0.9
 bus = "SoundEffects"
 

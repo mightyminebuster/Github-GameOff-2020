@@ -13,31 +13,20 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Main"
+length = 2.0
 loop = true
 step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath("StartHint:rect_position")
+tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 672, 825 ), Vector2( 672, 845 ), Vector2( 672, 825 ), Vector2( 672, 845 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.25, 0.75 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.73, 0.78 ), Vector2( 0.78, 0.73 ) ]
+"values": [ Vector2( 960, 412 ), Vector2( 960, 452 ) ]
 }
 
 [node name="StartMenu" type="Node2D"]
@@ -62,12 +51,12 @@ position = Vector2( 968, 568 )
 scale = Vector2( 29.75, 17.75 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.415686 )
-position = Vector2( 960, 432 )
-scale = Vector2( 0.738374, 0.771626 )
+position = Vector2( 960, 415.318 )
+scale = Vector2( 0.741093, 0.768907 )
 texture = ExtResource( 4 )
 
 [node name="ExahustParticles" type="CPUParticles2D" parent="Sprite"]
+visible = false
 modulate = Color( 1, 1, 1, 0.607843 )
 position = Vector2( 528.721, -58.6667 )
 amount = 32
@@ -86,16 +75,16 @@ hue_variation = -1.0
 hue_variation_random = 1.0
 
 [node name="Title" type="Sprite" parent="."]
-position = Vector2( 960, 540 )
+position = Vector2( 960, 888 )
 scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 10 )
 
 [node name="StartHint" parent="." instance=ExtResource( 2 )]
 visible = true
-margin_left = 672.0
-margin_top = 838.35
-margin_right = 1248.0
-margin_bottom = 918.35
+margin_left = 1344.0
+margin_top = 1000.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 text = " press space to start"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

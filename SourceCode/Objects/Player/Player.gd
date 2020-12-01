@@ -380,7 +380,12 @@ func grapple_exit_logic() -> void:
 
 func die_enter_logic() -> void:
 	$AnimationPlayer.play("Die")
-	$SoundController.play("Death")
+	
+	var a = ""
+	a = String(round(rand_range(1, 2)))
+	
+	
+	$SoundController.play("Death" + a)
 	
 	velocity = Vector2.ZERO #Stop all movement
 	camera.shake(20,20)
