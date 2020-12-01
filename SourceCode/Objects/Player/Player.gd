@@ -70,8 +70,7 @@ func _on_PlayerHitbox_body_entered(body):
 	set_state("die")
 
 func _ready():
-	pass
-	#position = Globals.player_default_position
+	position = Globals.player_default_position
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_right"):
@@ -140,6 +139,7 @@ func squash_stretch(squash, stretch):
 	player_sprite.scale.y = stretch
 
 func jump(jump_height):
+	$SoundController.play("Jump")
 	velocity.y = 0 #reset velocity
 	velocity.y = -sqrt(2 * gravity * (jump_height * jump_multiplier)) #apply velocity
 	
@@ -155,7 +155,7 @@ func idle_logic(delta):
 		#jump if you press button
 		set_state("jump")
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && Globals.has_grappling_hook:
 		#enter the grapple state if you press the button
 		set_state("grapple")
 	
@@ -188,7 +188,7 @@ func run_logic(delta):
 		#jump if you press the jump button
 		set_state("jump")
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && Globals.has_grappling_hook:
 		#enter the grapple state if you press the button
 		running_velocity = 0
 		set_state("grapple")
@@ -239,7 +239,7 @@ func fall_logic(delta):
 				#and your previpus state is run
 				set_state("jump") #set state to jump
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && Globals.has_grappling_hook:
 		#enter the grapple state if you press the button
 		set_state("grapple")
 	
@@ -264,7 +264,7 @@ func jump_enter_logic():
 func jump_logic(delta):
 	move_horizontally(air_friction) #move horizontally and subtract airfriction from max speed
 	
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") && Globals.has_grappling_hook:
 		#enter the grapple state if you press the button
 		set_state("grapple")
 	
@@ -299,6 +299,10 @@ func double_jump_enter_logic():
 func double_jump_logic(delta):
 	move_horizontally(air_friction) #move horizontally and subtract airfriction from max speed
 		
+	if Input.is_action_just_pressed("shoot") && Globals.has_grappling_hook:
+		#enter the grapple state if you press the button
+		set_state("grapple")	
+	
 	if velocity.y < 0:
 		#if you are rising
 		if Input.is_action_just_released("jump"):
@@ -327,20 +331,22 @@ func grapple_enter_logic() -> void:
 		else:
 			set_state("fall")
 	else:
-		camera.shake(3, 2)
 		running_velocity = true
 		shoot_dump = $GrappleHook.shoot()
 		target = shoot_dump[0]
+		$SoundController.play("RopeOut")
 
 func grapple_logic(_delta : float) -> void:
 	if Input.is_action_just_released("shoot"):
 		set_state("fall")
+	
 	if typeof(target) != TYPE_VECTOR2 && $GrappleHook.tip == $GrappleHook.tip_target:
 		if shoot_dump[1] == 1:
 			camera.shake(10, 10)
 		set_state("fall")
 	
 	if typeof(target) == TYPE_VECTOR2 && $GrappleHook.tip == $GrappleHook.tip_target:
+		
 		grapple_velocity = (target - position).normalized() * $GrappleHook.pull
 		
 		if grapple_velocity.y > 0:
@@ -362,6 +368,9 @@ func grapple_logic(_delta : float) -> void:
 		
 #
 func grapple_exit_logic() -> void:
+	$SoundController.play("impact", 3)
+	$SoundController.play("RopeIn")
+	
 	grapple_velocity = Vector2.ZERO
 	$GrappleHook.release() 
 
@@ -370,6 +379,7 @@ func grapple_exit_logic() -> void:
 func die_enter_logic() -> void:
 	$AnimationPlayer.play("Die")
 	velocity = Vector2.ZERO #Stop all movement
+	camera.shake(20,20)
 
 func die_logic(_delta : float) -> void:
 	velocity = Vector2.ZERO #Stop all movement

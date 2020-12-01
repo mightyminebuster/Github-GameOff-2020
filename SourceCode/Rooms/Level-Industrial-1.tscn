@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://RoomAssets/Industrial/Industrial-1/Background2.png" type="Texture" id=12]
 [ext_resource path="res://Objects/Enviorment/WorldEnvironment.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=14]
+[ext_resource path="res://RoomAssets/AudioStreamPlayer.tscn" type="PackedScene" id=15]
+[ext_resource path="res://RoomAssets/Music/2-1.wav" type="AudioStream" id=16]
+[ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Objects/Pickups/CheesePickup/CheesePickup.tscn" type="PackedScene" id=18]
 
 [node name="Level-Industrial-1" type="Node2D"]
 
@@ -59,52 +63,72 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 1080
 
-[node name="Obstacles" type="Node2D" parent="Camera2D"]
+[node name="CheckPoint" parent="." instance=ExtResource( 7 )]
+position = Vector2( 6086.43, 293.428 )
 
-[node name="PendulumSaw" parent="." instance=ExtResource( 4 )]
+[node name="SceneSwitchActivator" parent="." instance=ExtResource( 17 )]
+position = Vector2( 12888, 392 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="PendulumSaw" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1456, 440 )
-rotation = 0.390476
+rotation = 0.65906
 rotation_type = "HalfRotation"
 offset = 295
 speed = 0.8
 
-[node name="PendulumSaw2" parent="." instance=ExtResource( 4 )]
+[node name="PendulumSaw2" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 5526.75, 530.8 )
-rotation = -1.22167
+rotation = 0.964036
 rotation_type = "HalfRotation"
 offset = 389
 speed = 0.6
 
-[node name="PendulumSaw3" parent="." instance=ExtResource( 4 )]
+[node name="PendulumSaw3" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -0.0998419
+rotation = -4.02859
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
-[node name="PendulumSaw6" parent="." instance=ExtResource( 4 )]
+[node name="PendulumSaw6" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 3846.35, 550 )
-rotation = -0.0998419
+rotation = -4.02859
 rotation_type = "FullRotation"
 offset = 407
 speed = 0.8
 
-[node name="PendulumSaw4" parent="." instance=ExtResource( 4 )]
+[node name="PendulumSaw4" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 7089.15, 256.8 )
-rotation = 1.5708
+rotation = 1.1183
 rotation_type = "HalfRotation"
 offset = 368
 speed = 0.5
 
-[node name="PendulumSaw5" parent="." instance=ExtResource( 4 )]
+[node name="PendulumSaw5" parent="Obstacles" instance=ExtResource( 4 )]
 position = Vector2( 1456, 712 )
-rotation = 0.390476
+rotation = 0.65906
 rotation_type = "HalfRotation"
 offset = 360
 speed = 0.8
 
-[node name="CheckPoint" parent="." instance=ExtResource( 7 )]
-position = Vector2( 6086.43, 293.428 )
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="CheesePickup" parent="Pickups" instance=ExtResource( 18 )]
+position = Vector2( 1456, 344 )
+
+[node name="CheesePickup2" parent="Pickups" instance=ExtResource( 18 )]
+position = Vector2( 5520, 312 )
+
+[node name="CheesePickup3" parent="Pickups" instance=ExtResource( 18 )]
+position = Vector2( 7088, 352 )
+
+[node name="CheesePickup4" parent="Pickups" instance=ExtResource( 18 )]
+position = Vector2( 10080, 736 )
+
+[node name="CheesePickup5" parent="Pickups" instance=ExtResource( 18 )]
+position = Vector2( 12504, 800 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 13 )]
 
@@ -113,3 +137,7 @@ position = Vector2( 6552, 752 )
 scale = Vector2( 204.75, 23.375 )
 
 [node name="GUI" parent="." instance=ExtResource( 14 )]
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 15 )]
+stream = ExtResource( 16 )
+pitch_scale = 0.8

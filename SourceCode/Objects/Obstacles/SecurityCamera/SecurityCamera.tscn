@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Obstacles/SecurityCamera/SecurityCamera.png" type="Texture" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 3
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/cam.png-ed9cc532be4ea0d79a40fee60603333c.stex"
 
 [sub_resource type="Animation" id=2]
 loop = true
@@ -20,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 30.0, -30.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
 
 [node name="SecurityCamera" type="Position2D"]
 material = SubResource( 1 )
@@ -28,7 +44,16 @@ __meta__ = {
 "_gizmo_extents_": 30.0
 }
 
+[node name="Sprite" type="TextureRect" parent="."]
+margin_right = 500.0
+margin_bottom = 250.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RotationFix" type="Node2D" parent="."]
+rotation = -0.194189
 
 [node name="Raycasts" type="Node2D" parent="RotationFix"]
 

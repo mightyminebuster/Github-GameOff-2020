@@ -44,6 +44,7 @@ limit_top = 0
 limit_bottom = 1080
 
 [node name="GrapplePickup" parent="." instance=ExtResource( 4 )]
+position = Vector2( 853.481, 780.427 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1488, 560 )

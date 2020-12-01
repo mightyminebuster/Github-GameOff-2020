@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/1-2.wav-df7742b544c1abc89c58b4be1b3fc22e.sample"
+
+[deps]
+
+source_file="res://RoomAssets/Music/1-2.wav"
+dest_files=[ "res://.import/1-2.wav-df7742b544c1abc89c58b4be1b3fc22e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

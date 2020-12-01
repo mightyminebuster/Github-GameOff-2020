@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Rooms/CutScenes/ResumeHint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/Slide1.jpg" type="Texture" id=2]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/Slide2.jpg" type="Texture" id=3]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/Slide3.jpg" type="Texture" id=4]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/Slide4.jpg" type="Texture" id=5]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/Slide5.jpg" type="Texture" id=6]
+[ext_resource path="res://Rooms/CutScenes/BegningCutscene/BeginingCutscene.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "EndLoop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Slide5:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slide5:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ResumeHint:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1232, 880 ), Vector2( 1232, 900 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ResumeHint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Main"
+length = 16.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Slide2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slide3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Slide4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 10.5, 11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Slide5:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 15.5, 16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ResumeHint:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="BeginingCutscene" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Slide1" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 960, 540 )
+
+[node name="Slide2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 3 )
+offset = Vector2( 960, 540 )
+
+[node name="Slide3" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 4 )
+offset = Vector2( 960, 540 )
+
+[node name="Slide4" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 5 )
+offset = Vector2( 960, 540 )
+
+[node name="Slide5" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 6 )
+offset = Vector2( 960, 540 )
+
+[node name="ResumeHint" parent="." instance=ExtResource( 1 )]
+text = " Press Space To Start"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Main"
+playback_speed = 0.75
+anims/EndLoop = SubResource( 1 )
+anims/Main = SubResource( 2 )

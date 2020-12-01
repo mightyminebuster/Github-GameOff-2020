@@ -7,5 +7,5 @@ func _on_CheesePickup_body_entered(body):
 	var i = particles.instance()
 	i.emitting = true
 	i.previous_position = global_position
-	get_tree().get_root().add_child(i)
+	get_tree().get_root().get_child(2).add_child(i)
 	queue_free()

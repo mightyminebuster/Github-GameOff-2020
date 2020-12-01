@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Objects/Tilesets/GrapplableTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,10 @@
 [ext_resource path="res://Objects/Tilesets/CheeseFIller.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Objects/GUI/GUI.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Objects/SceneSwitcher/SceneSwitchActivator.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Objects/Pickups/CheesePickup/CheesePickup.tscn" type="PackedScene" id=17]
+[ext_resource path="res://RoomAssets/AudioStreamPlayer.tscn" type="PackedScene" id=18]
+[ext_resource path="res://RoomAssets/Music/1-2.wav" type="AudioStream" id=19]
+[ext_resource path="res://Rooms/Level-Jail-3.tscn" type="PackedScene" id=20]
 
 [node name="Level-Jail-2" type="Node2D"]
 
@@ -69,6 +73,7 @@ position = Vector2( 5335.49, 1027.81 )
 
 [node name="SceneSwitchActivator" parent="." instance=ExtResource( 16 )]
 position = Vector2( 12296, 232 )
+new_scene = ExtResource( 20 )
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -128,9 +133,26 @@ speed = 0.21
 
 [node name="SecurityCamera12" parent="Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 7952, 544 )
-rotation = 3.96364
+rotation = 4.85202
 scale = Vector2( 1.471, 2.392 )
 speed = 0.11
+
+[node name="Pickups" type="Node2D" parent="."]
+
+[node name="CheesePickup" parent="Pickups" instance=ExtResource( 17 )]
+position = Vector2( 1920, 240 )
+
+[node name="CheesePickup2" parent="Pickups" instance=ExtResource( 17 )]
+position = Vector2( 3968, 536 )
+
+[node name="CheesePickup3" parent="Pickups" instance=ExtResource( 17 )]
+position = Vector2( 4096, 416 )
+
+[node name="CheesePickup4" parent="Pickups" instance=ExtResource( 17 )]
+position = Vector2( 4208, 536 )
+
+[node name="CheesePickup5" parent="Pickups" instance=ExtResource( 17 )]
+position = Vector2( 7072, 552 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 11 )]
 
@@ -139,3 +161,6 @@ position = Vector2( 6168, 552 )
 scale = Vector2( 192.875, 17.25 )
 
 [node name="GUI" parent="." instance=ExtResource( 15 )]
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource( 18 )]
+stream = ExtResource( 19 )

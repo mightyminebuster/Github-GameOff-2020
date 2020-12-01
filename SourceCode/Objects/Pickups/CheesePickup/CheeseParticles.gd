@@ -7,4 +7,4 @@ func _ready():
 
 func _process(delta : float) -> void:
 	if !emitting:
-		queue_free()
+		free()

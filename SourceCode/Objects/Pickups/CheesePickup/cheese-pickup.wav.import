@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cheese-pickup.wav-dea7ddf698f0a335d97084c628e2b50e.sample"
+
+[deps]
+
+source_file="res://Objects/Pickups/CheesePickup/cheese-pickup.wav"
+dest_files=[ "res://.import/cheese-pickup.wav-dea7ddf698f0a335d97084c628e2b50e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

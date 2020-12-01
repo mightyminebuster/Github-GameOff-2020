@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Objects/Player/GrappleHook.gd" type="Script" id=1]
 [ext_resource path="res://PlaceholderTexture.png" type="Texture" id=2]
 [ext_resource path="res://Objects/Player/Player.gd" type="Script" id=3]
 [ext_resource path="res://Objects/Player/AimingHint.gd" type="Script" id=4]
 [ext_resource path="res://Objects/Player/Player.png" type="Texture" id=5]
+[ext_resource path="res://Objects/Player/SoundController.gd" type="Script" id=6]
+[ext_resource path="res://Objects/Player/Sfx/Jump.wav" type="AudioStream" id=7]
+[ext_resource path="res://Objects/Player/Sfx/RopeIn.wav" type="AudioStream" id=8]
+[ext_resource path="res://Objects/Player/Sfx/impact.wav" type="AudioStream" id=9]
+[ext_resource path="res://Objects/Player/Sfx/RopeOut.wav" type="AudioStream" id=10]
+[ext_resource path="res://Objects/Player/Sfx/RopeImpact.wav" type="AudioStream" id=11]
+[ext_resource path="res://Objects/Player/Sfx/GrapplePull.wav" type="AudioStream" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -17,6 +24,7 @@ radius = 32.0
 height = 0.0
 
 [sub_resource type="Animation" id=4]
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
@@ -24,10 +32,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
+"values": [ 15, 14, 16, 17, 18, 19, 20, 21 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("PlayerSprite:modulate")
@@ -114,7 +122,7 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 5 )
 vframes = 11
 hframes = 4
-frame = 28
+frame = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
@@ -163,6 +171,29 @@ anims/Run = SubResource( 6 )
 anims/idle = SubResource( 7 )
 anims/jump = SubResource( 8 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundController" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 7 )
+bus = "SoundEffects"
+
+[node name="GrapplePull" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 12 )
+bus = "SoundEffects"
+
+[node name="Impact" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 9 )
+bus = "SoundEffects"
+
+[node name="RopeImpact" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 11 )
+bus = "SoundEffects"
+
+[node name="RopeIn" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 8 )
+
+[node name="RopeOut" type="AudioStreamPlayer" parent="SoundController"]
+stream = ExtResource( 10 )
 [connection signal="area_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_area_entered"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]
